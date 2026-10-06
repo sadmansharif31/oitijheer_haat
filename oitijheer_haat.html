@@ -36,7 +36,8 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .org{font-size:12px;letter-spacing:.14em;opacity:.85;text-transform:uppercase}
 .brand{font-size:15px;letter-spacing:.3em;color:var(--gold);margin:6px 0 0;font-weight:600}
 .hero h1{font-size:clamp(54px,12vw,112px);font-weight:700;line-height:1.15;margin:8px 0;font-family:'Hind Siliguri','Poppins';text-shadow:3px 3px 0 var(--red)}
-.tag{font-size:clamp(17px,3vw,24px);font-family:'Poppins';font-style:italic;font-weight:500}
+.tagband{background:linear-gradient(90deg,var(--red),#b81f2f);color:#fff;text-align:center;padding:20px 0 56px;position:relative;z-index:1}
+.tagband p{margin:0;font:italic 600 clamp(18px,3.4vw,27px) 'Poppins','Hind Siliguri';letter-spacing:.3px;text-shadow:0 2px 6px rgba(0,0,0,.25)}
 .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
 .meta span{background:var(--green2);border:1px solid rgba(224,165,38,.75);padding:9px 16px;border-radius:12px;font-size:15px;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #8f1623}
@@ -91,7 +92,6 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .hero .hoverlay{position:absolute;inset:0;z-index:1;display:none;background:linear-gradient(160deg,rgba(6,64,42,.62),rgba(11,93,59,.4))}
 .hero.hasphotos .wrap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 /* over photos, give the tagline and countdown a solid backing so they stay readable */
-.hero.hasphotos .tag{display:inline-block;background:var(--green2);padding:7px 20px;border-radius:12px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
 .hero.hasphotos #cd{background:var(--green2);color:var(--gold);padding:7px 18px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.35);width:max-content;max-width:90%;margin-left:auto;margin-right:auto}
 .hero.hasphotos .hoverlay{display:block}
 .hero.hasphotos:before{opacity:.05}
@@ -175,7 +175,6 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="org" id="orgline">Department of Innovation &amp; Entrepreneurship · Daffodil International University</div>
 <div class="brand">BRANDING BANGLADESH</div>
 <h1>ঐতিহ্যের হাট</h1>
-<div class="tag">64 Districts. One Campus. One Heritage.</div>
 <div class="meta"><span>📅 21 November 2026</span><span>🕤 9:30 AM – 5:00 PM</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
 <a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span>
 <p id="cd" style="margin-top:22px;font-weight:600;color:var(--gold)"></p>
@@ -184,6 +183,8 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <button class="hnav n" onclick="gNext()" aria-label="Next photo">&#8250;</button>
 <div class="hdots" id="hdots"></div>
 </header>
+
+<div class="tagband"><div class="wrap"><p>64 Districts. One Campus. One Heritage.</p></div></div>
 
 <div class="wrap stats"><div class="grid">
 <div class="stat"><b>64</b><small>Districts, the entire country</small></div>
