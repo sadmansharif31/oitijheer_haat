@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ঐতিহ্যের হাট ৫.০ · Branding Bangladesh · DIU</title>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--green:#0b5d3b;--green2:#06402a;--red:#d62839;--gold:#e0a526;--cream:#fbf3e1;--paper:#fff9ec;--ink:#2a1c10;--card:#fffdf6;--line:#e8d6ac;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -12,13 +12,13 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--cream:#16231b;--paper:#1b2a20;--ink:#f6ead2;--card:#223428;--line:#4a5b3d}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 *{box-sizing:border-box}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:'Hind Siliguri',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
-h1,h2,h3{font-family:'Playfair Display','Hind Siliguri',serif;margin:0}
-.bn{font-family:'Hind Siliguri',sans-serif}
+/* Poppins is the main font; Hind Siliguri is the automatic fallback for Bangla text */
+body{margin:0;background:var(--cream);color:var(--ink);font-family:'Poppins','Hind Siliguri',system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+h1,h2,h3{font-family:'Poppins','Hind Siliguri',sans-serif;margin:0}
+.bn{font-family:'Hind Siliguri','Poppins',sans-serif} /* Bangla brand text keeps the Bangla font first */
 a{color:inherit}
 .wrap{max-width:1080px;margin:auto;padding:0 20px}
 section{padding:64px 0}
-/* kantha / alpona border */
 .border{height:16px;background:repeating-linear-gradient(90deg,var(--red) 0 14px,var(--gold) 14px 20px,var(--green) 20px 34px,var(--gold) 34px 40px)}
 .dots{background-image:radial-gradient(var(--line) 1.5px,transparent 1.6px);background-size:22px 22px}
 nav{position:sticky;top:0;z-index:20;background:var(--green2);color:#fff;padding-top:env(safe-area-inset-top,0px)}
@@ -35,20 +35,20 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .ribbon{display:inline-block;background:var(--gold);color:#3a2600;font-weight:700;padding:5px 18px;border-radius:30px;font-size:14px;margin-bottom:14px}
 .org{font-size:12px;letter-spacing:.14em;opacity:.85;text-transform:uppercase}
 .brand{font-size:15px;letter-spacing:.3em;color:var(--gold);margin:6px 0 0;font-weight:600}
-.hero h1{font-size:clamp(54px,12vw,112px);font-weight:700;line-height:1.15;margin:8px 0;font-family:'Hind Siliguri';text-shadow:3px 3px 0 var(--red)}
-.tag{font-size:clamp(17px,3vw,24px);font-family:'Playfair Display';font-style:italic}
+.hero h1{font-size:clamp(54px,12vw,112px);font-weight:700;line-height:1.15;margin:8px 0;font-family:'Hind Siliguri','Poppins';text-shadow:3px 3px 0 var(--red)}
+.tag{font-size:clamp(17px,3vw,24px);font-family:'Poppins';font-style:italic;font-weight:500}
 .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
 .meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:12px;font-size:15px}
-.btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Hind Siliguri';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #8f1623}
+.btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #8f1623}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8f1623}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
 .stats{margin-top:-40px;position:relative;z-index:2}
 .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 .stat{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:20px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.12)}
-.stat b{display:block;font:800 38px 'Playfair Display';color:var(--red)}
+.stat b{display:block;font:800 38px 'Poppins';color:var(--red)}
 .stat small{font-size:14px;opacity:.8}
 .title{text-align:center;margin-bottom:34px}
-.title h2{font-size:clamp(28px,5vw,40px);color:var(--green)}
+.title h2{font-size:clamp(28px,5vw,40px);color:var(--green);font-weight:700}
 :root[data-theme="dark"] .title h2{color:var(--gold)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .title h2{color:var(--gold)}}
 .title i{display:block;width:140px;height:10px;margin:10px auto 0;background:repeating-linear-gradient(90deg,var(--red) 0 10px,var(--gold) 10px 16px,var(--green) 16px 26px,transparent 26px 30px)}
@@ -59,7 +59,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px;position:relative}
 .card:before{content:"❀";position:absolute;right:14px;top:8px;color:var(--gold);font-size:22px}
-.card h3{font-size:19px;color:var(--red);font-family:'Hind Siliguri';margin-bottom:6px}
+.card h3{font-size:19px;color:var(--red);font-family:'Poppins';margin-bottom:6px;font-weight:600}
 .card p{margin:0;font-size:15px}
 .sched{max-width:720px;margin:auto}
 .row{display:flex;gap:16px;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
@@ -80,32 +80,62 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .bt{text-align:center;font-weight:600;margin-bottom:6px;color:var(--green)}
 .call{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:26px}
 .call div{background:var(--green);color:#fff;border-radius:16px;padding:20px;text-align:center;border-bottom:6px solid var(--gold)}
-.call b{display:block;font:800 34px 'Playfair Display';color:var(--gold)}
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
-.ph{aspect-ratio:4/3;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:flex-end;color:#fff;border:3px solid var(--card);box-shadow:0 4px 12px rgba(0,0,0,.2);cursor:pointer}
-.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ph em{position:absolute;top:30%;left:0;right:0;text-align:center;font-size:44px;font-style:normal;opacity:.85}
-.ph span{position:relative;width:100%;padding:8px 12px;background:linear-gradient(transparent,rgba(0,0,0,.7));font-size:13px}
-.note{text-align:center;font-size:13px;opacity:.7;margin-top:12px}
+.call b{display:block;font:800 34px 'Poppins';color:var(--gold)}
+
+/* ---------- gallery carousel ---------- */
+.gcar{position:relative;max-width:900px;margin:auto;border-radius:18px;overflow:hidden;border:3px solid var(--card);box-shadow:0 12px 30px rgba(0,0,0,.22);background:#0b0b0b}
+.gcar .gtrack{display:flex;transition:transform .6s cubic-bezier(.65,.05,.2,1);height:clamp(240px,46vw,460px)}
+.gcar .gslide{min-width:100%;position:relative;display:flex;align-items:flex-end;cursor:pointer}
+.gcar .gslide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gcar .gslide em{position:absolute;inset:0;display:grid;place-items:center;font-size:70px;font-style:normal;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}
+.gcar .cap{position:relative;width:100%;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:14px}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.gnav:hover{background:rgba(0,0,0,.7)}
+.gnav.p{left:10px}.gnav.n{right:10px}
+.gdots{display:flex;gap:7px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.gdots button{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;transition:width .25s,background .25s}
+.gdots button.on{background:var(--red);width:24px;border-radius:5px}
+
+/* ---------- partners marquee ---------- */
+.marq{overflow:hidden;position:relative;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marq .mtrack{display:flex;gap:34px;width:max-content;animation:scrollx 30s linear infinite}
+.marq:hover .mtrack{animation-play-state:paused}
+.marq .logo{height:84px;min-width:150px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 24px}
+.marq .logo img{max-height:56px;max-width:170px;object-fit:contain}
+.marq .logo b{font-family:'Poppins';font-weight:700;color:#0e5da8;font-size:20px;white-space:nowrap}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
 .join{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
 .join span{background:var(--card);border:1.5px solid var(--gold);padding:8px 18px;border-radius:30px}
-.partner{text-align:center;background:var(--card);border:2px dashed var(--gold);border-radius:20px;padding:30px;max-width:640px;margin:auto}
-.partner b{font:800 28px 'Playfair Display';color:#0e5da8}
 .reg{background:linear-gradient(160deg,var(--green2),var(--green));color:#fff}
 .reg .title h2{color:var(--gold)}
 form{background:var(--card);color:var(--ink);border-radius:20px;padding:28px;max-width:760px;margin:auto;border:4px double var(--gold);display:grid;grid-template-columns:1fr 1fr;gap:14px}
 form .f{display:flex;flex-direction:column;gap:4px}
 form .full{grid-column:1/-1}
 label{font-weight:600;font-size:14px}
-input,select,textarea{font:16px 'Hind Siliguri';padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+input,select,textarea{font:16px 'Poppins','Hind Siliguri';padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
 input:focus,select:focus,textarea:focus{outline:3px solid var(--gold);border-color:var(--green)}
 .ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
 .ck input{width:auto;margin-top:6px}
 #msg{display:none;text-align:center;padding:30px;max-width:760px;margin:auto;background:var(--card);color:var(--ink);border-radius:20px;border:4px double var(--gold)}
 #msg h3{color:var(--green);font-size:28px}
+
+/* ---------- admin panel ---------- */
+.acard{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px;margin-bottom:20px}
+.acard h3{font-family:'Poppins';margin-bottom:12px;font-size:19px}
+.acard input[type=file]{margin-bottom:10px;padding:9px}
+.acard input[type=text],.acard #apass{margin-bottom:12px}
+.amsg{font-size:14px;margin-top:10px;min-height:18px;font-weight:500}
+.amsg.ok{color:var(--green)} .amsg.err{color:var(--red)}
+.athumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:16px}
+.athumbs .it{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.athumbs .it img{width:100%;height:92px;object-fit:contain;display:block;background:#fff}
+.athumbs .it .x{position:absolute;top:4px;right:4px;background:var(--red);color:#fff;border:0;border-radius:6px;font-size:11px;padding:3px 7px;cursor:pointer}
+
 footer{background:var(--green2);color:#fff;text-align:center;padding:34px 0 40px}
 footer p{margin:4px 0}
 footer .c{color:var(--gold);font-weight:700}
+footer a.adminlink{opacity:.4;font-size:12px}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;color:#fff;font-size:20px;padding:20px;text-align:center}
 @media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.row{flex-direction:column;align-items:flex-start;gap:6px}}
 </style>
@@ -178,15 +208,20 @@ footer .c{color:var(--gold);font-weight:700}
 
 <section id="gallery" class="dots"><div class="wrap">
 <div class="title"><h2>Gallery · Previous Editions</h2><i></i></div>
-<div class="gal" id="gal"></div>
-<p class="note">Tap a photo to enlarge. To add real photos, put image links in the GALLERY list in the page code (field <code>src</code>).</p>
+<div class="gcar" id="gcar">
+  <div class="gtrack" id="gtrack"></div>
+  <button class="gnav p" onclick="gPrev()" aria-label="Previous">&#8249;</button>
+  <button class="gnav n" onclick="gNext()" aria-label="Next">&#8250;</button>
+</div>
+<div class="gdots" id="gdots"></div>
+<p class="note" style="text-align:center;font-size:13px;opacity:.7;margin-top:12px">Tap a photo to enlarge.</p>
 </div></section>
 
 <section style="background:var(--paper)"><div class="wrap">
 <div class="title"><h2>Who Joins Us</h2><i></i></div>
 <div class="join"><span>Students &amp; student entrepreneurs</span><span>Alumni</span><span>Business leaders &amp; chambers</span><span>Government &amp; SME-support organizations</span><span>Development partners</span><span>Diplomats</span><span>Media</span><span>The general public</span></div>
-<div class="title" style="margin-top:50px"><h2>Our Partner</h2><i></i></div>
-<div class="partner"><b>BRAC Bank PLC</b><p>Partnered with us on the 4th edition in 2025 and returns for the 5th edition in 2026.</p></div>
+<div class="title" style="margin-top:54px"><h2>Sponsors &amp; Partners</h2><i></i></div>
+<div class="marq" id="pmarq"><div class="mtrack" id="ptrack"></div></div>
 </div></section>
 
 <section id="register" class="reg"><div class="wrap">
@@ -207,6 +242,33 @@ footer .c{color:var(--gold);font-weight:700}
 <div id="msg"><h3>ধন্যবাদ! Thank you!</h3><p id="mt"></p></div>
 </div></section>
 
+<!-- ADMIN PANEL (hidden; open by visiting the site with #admin at the end of the address) -->
+<section id="admin" style="display:none;background:var(--paper)"><div class="wrap">
+<div class="title"><h2>Admin Panel</h2><i></i><p style="margin-top:12px">Upload gallery photos and partner logos. Enter the admin password once, then upload.</p></div>
+<div style="max-width:760px;margin:auto">
+  <label>Admin password</label>
+  <input id="apass" type="password" placeholder="Enter admin password">
+
+  <div class="acard" style="margin-top:20px">
+    <h3 style="color:var(--green)">Add gallery photo</h3>
+    <input type="file" id="gfile" accept="image/*">
+    <input type="text" id="gcap" placeholder="Caption (optional)">
+    <button class="btn" type="button" onclick="adminUpload('gallery')">Upload photo</button>
+    <div class="amsg" id="gmsg"></div>
+    <div class="athumbs" id="galist"></div>
+  </div>
+
+  <div class="acard">
+    <h3 style="color:var(--green)">Add partner / sponsor logo</h3>
+    <input type="file" id="plogo" accept="image/*">
+    <input type="text" id="pname" placeholder="Partner name (optional)">
+    <button class="btn" type="button" onclick="adminUpload('partner')">Upload logo</button>
+    <div class="amsg" id="pmsg"></div>
+    <div class="athumbs" id="palist"></div>
+  </div>
+</div>
+</div></section>
+
 <div class="border"></div>
 <footer id="contact"><div class="wrap">
 <h3 class="bn" style="font-size:26px;color:var(--gold)">ঐতিহ্যের হাট ৫.০</h3>
@@ -214,25 +276,147 @@ footer .c{color:var(--gold);font-weight:700}
 <p style="margin-top:16px"><b>Organized by</b><br>Department of Innovation &amp; Entrepreneurship, Daffodil International University<br><small>Established in 2015, the department helps students turn ideas into ventures through hands-on learning, mentoring and industry networks.</small></p>
 <p style="margin-top:14px">📞 <a href="tel:01730715267">01730715267</a> · ✉ <a href="mailto:headde@daffodilvarsity.edu.bd">headde@daffodilvarsity.edu.bd</a></p>
 <p>📍 13th Floor, AB4, Daffodil Smart City, Birulia, Savar, Dhaka</p>
+<p><a class="adminlink" href="#admin" onclick="openAdmin()">Admin</a></p>
 </div></footer>
 <div class="lb" id="lb" onclick="this.style.display='none'"></div>
 
 <script>
-// ===== Gallery: add real photos by filling in src (image URL as data: URI) =====
-const GALLERY=[
-{t:"1.0 · 2022",c:"Our first haat, 38 districts",e:"🏺",g:"#d62839,#8f1623"},
-{t:"2.0 · 2023",c:"Stalls full of regional sweets",e:"🍯",g:"#0b5d3b,#2f9b68"},
-{t:"3.0 · 2024",c:"Handloom and nakshi kantha",e:"🧵",g:"#e0a526,#b87d0c"},
-{t:"4.0 · 2025",c:"Crowds on campus with BRAC Bank",e:"🏪",g:"#0b5d3b,#06402a"},
-{t:"Cultural Program",c:"Folk dance and music",e:"🎭",g:"#8f1623,#d62839"},
-{t:"Prize Giving",c:"Best district awards",e:"🏆",g:"#b87d0c,#e0a526"},
-{t:"Pottery & Terracotta",c:"Clay crafts from the countryside",e:"🪔",g:"#a0522d,#d2814f"},
-{t:"Student Entrepreneurs",c:"Learning to sell, face to face",e:"🤝",g:"#06402a,#0b5d3b"}];
-const G=document.getElementById('gal');
-GALLERY.forEach(p=>{const d=document.createElement('div');d.className='ph';d.style.background=`linear-gradient(135deg,${p.g})`;
-d.innerHTML=(p.src?`<img src="${p.src}" alt="">`:`<em>${p.e}</em>`)+`<span><b>${p.t}</b><br>${p.c}</span>`;
-d.onclick=()=>{const l=document.getElementById('lb');l.innerHTML=(p.src?`<img src="${p.src}" style="max-width:100%;max-height:90vh">`:`<div><div style="font-size:90px">${p.e}</div><b>${p.t}</b><br>${p.c}</div>`);l.style.display='flex'};G.appendChild(d)});
+// ===== Google Apps Script API =====
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLNOKzB5FY9xKhxieg0XGRWzwScFal_Aq-rOBBr9CVSvQD_d_TTTk2Sj_ttiqGv2V8/exec";
 
+// READ from the API (gallery / partners lists). Returns parsed JSON, or null on failure.
+async function apiGet(params){
+  try{
+    const q=new URLSearchParams(params).toString();
+    const res=await fetch(SCRIPT_URL+"?"+q);          // normal GET, response is readable
+    return await res.json();
+  }catch(x){ return null; }
+}
+// WRITE to the API (register / upload / delete). Fire-and-forget (cannot read reply), robust across devices.
+function apiSend(obj){
+  return fetch(SCRIPT_URL,{
+    method:"POST", mode:"no-cors",
+    headers:{"Content-Type":"text/plain;charset=utf-8"},
+    body:JSON.stringify(obj), keepalive:true
+  });
+}
+
+/* ================= GALLERY CAROUSEL ================= */
+const PLACEHOLDER=[  // shown only if no photos have been uploaded yet
+{c:"Our first haat, 38 districts",e:"🏺"},{c:"Stalls full of regional sweets",e:"🍯"},
+{c:"Handloom and nakshi kantha",e:"🧵"},{c:"Crowds on campus",e:"🏪"},
+{c:"Folk dance and music",e:"🎭"},{c:"Best district awards",e:"🏆"}];
+let GAL=[], gi=0, gTimer=null;
+async function loadGallery(){
+  const res=await apiGet({action:"getGallery"});
+  GAL=(res&&res.items&&res.items.length)?res.items:PLACEHOLDER;
+  buildGallery();
+}
+function buildGallery(){
+  const t=document.getElementById('gtrack'), dots=document.getElementById('gdots');
+  t.innerHTML=GAL.map(p=>`
+    <div class="gslide" onclick="galEnlarge('${(p.url||'').replace(/'/g,"")}','${(p.caption||p.c||'').replace(/'/g,"")}','${p.e||''}')">
+      ${p.url?`<img src="${p.url}" alt="" loading="lazy">`:`<em>${p.e||'🏮'}</em>`}
+      <div class="cap">${esc(p.caption||p.c||'')}</div>
+    </div>`).join("");
+  dots.innerHTML=GAL.map((_,i)=>`<button class="${i===0?'on':''}" onclick="gGo(${i})" aria-label="Slide ${i+1}"></button>`).join("");
+  gi=0; gShow(); gAuto();
+}
+function gShow(){
+  document.getElementById('gtrack').style.transform=`translateX(-${gi*100}%)`;
+  document.querySelectorAll('#gdots button').forEach((d,i)=>d.classList.toggle('on',i===gi));
+}
+function gGo(i){ gi=(i+GAL.length)%GAL.length; gShow(); gAuto(); }
+function gNext(){ gGo(gi+1); }
+function gPrev(){ gGo(gi-1); }
+function gAuto(){ clearInterval(gTimer); if(GAL.length>1) gTimer=setInterval(()=>gGo(gi+1),4500); }
+function galEnlarge(url,cap,em){
+  const l=document.getElementById('lb');
+  l.innerHTML=url?`<img src="${url}" style="max-width:100%;max-height:90vh">`
+                 :`<div><div style="font-size:90px">${em||'🏮'}</div>${esc(cap)}</div>`;
+  l.style.display='flex';
+}
+// pause gallery on hover, swipe on touch
+(function(){const el=document.getElementById('gcar');
+  el.addEventListener('mouseenter',()=>clearInterval(gTimer));
+  el.addEventListener('mouseleave',gAuto);
+  let x=null; el.addEventListener('touchstart',e=>x=e.touches[0].clientX,{passive:true});
+  el.addEventListener('touchend',e=>{if(x===null)return;const dx=e.changedTouches[0].clientX-x;if(dx<-40)gNext();else if(dx>40)gPrev();x=null;});
+})();
+
+/* ================= PARTNERS MARQUEE ================= */
+async function loadPartners(){
+  const res=await apiGet({action:"getPartners"});
+  const items=(res&&res.items)?res.items:[];
+  const track=document.getElementById('ptrack');
+  let cells;
+  if(items.length){
+    cells=items.map(p=>`<div class="logo">${p.url?`<img src="${p.url}" alt="${esc(p.caption||'')}">`:`<b>${esc(p.caption||'Partner')}</b>`}</div>`);
+  }else{
+    cells=[`<div class="logo"><b>BRAC Bank PLC</b></div>`];  // fallback until logos are uploaded
+  }
+  // duplicate the row so the scroll loops seamlessly
+  track.innerHTML = cells.join("") + cells.join("");
+  if(cells.length<=1){ track.style.animation="none"; track.style.justifyContent="center"; track.style.margin="auto"; }
+}
+
+/* ================= ADMIN ================= */
+function openAdmin(){ document.getElementById('admin').style.display='block';
+  document.getElementById('admin').scrollIntoView({behavior:'smooth'}); loadAdminLists(); }
+// shrink an image in the browser before upload (fast uploads, small storage)
+function shrink(file,maxW,asPng){
+  return new Promise((resolve,reject)=>{
+    const img=new Image(), url=URL.createObjectURL(file);
+    img.onload=()=>{ let w=img.width,h=img.height;
+      if(w>maxW){ h=Math.round(h*maxW/w); w=maxW; }
+      const c=document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h); URL.revokeObjectURL(url);
+      const type=asPng?'image/png':'image/jpeg';
+      resolve({data:c.toDataURL(type,asPng?undefined:0.82).split(',')[1], type});
+    };
+    img.onerror=reject; img.src=url;
+  });
+}
+async function adminUpload(kind){
+  const pass=document.getElementById('apass').value.trim();
+  const isP=kind==='partner';
+  const fileEl=document.getElementById(isP?'plogo':'gfile');
+  const capEl=document.getElementById(isP?'pname':'gcap');
+  const msg=document.getElementById(isP?'pmsg':'gmsg');
+  msg.className='amsg';
+  if(!pass){ msg.className='amsg err'; msg.textContent='Enter the admin password first.'; return; }
+  if(!fileEl.files[0]){ msg.className='amsg err'; msg.textContent='Choose an image file.'; return; }
+  msg.textContent='Uploading...';
+  try{
+    const {data,type}=await shrink(fileEl.files[0], isP?700:1600, isP); // logos as PNG (keep transparency)
+    await apiSend({action:"upload", kind, password:pass, mime:type, data, caption:capEl.value||""});
+    msg.className='amsg ok'; msg.textContent='Uploaded. Refreshing...';
+    fileEl.value=''; capEl.value='';
+    setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners();
+      msg.textContent='Done. If it did not appear, check the password and try again.'; }, 2500);
+  }catch(x){ msg.className='amsg err'; msg.textContent='Upload failed: '+x.message; }
+}
+async function loadAdminLists(){
+  const g=await apiGet({action:"getGallery"}), p=await apiGet({action:"getPartners"});
+  renderAdmin('galist','gallery',(g&&g.items)||[]);
+  renderAdmin('palist','partner',(p&&p.items)||[]);
+}
+function renderAdmin(elId,kind,items){
+  const box=document.getElementById(elId);
+  box.innerHTML = items.length ? items.map(it=>`
+    <div class="it"><img src="${it.url}" alt="">
+      <button class="x" onclick="adminDelete('${kind}','${it.id}')">Delete</button></div>`).join("")
+    : '<div style="color:var(--muted);font-size:13px;opacity:.7">Nothing uploaded yet.</div>';
+}
+async function adminDelete(kind,id){
+  const pass=document.getElementById('apass').value.trim();
+  if(!pass){ alert('Enter the admin password first.'); return; }
+  if(!confirm('Delete this item?')) return;
+  await apiSend({action:"delete", kind, id, password:pass});
+  setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners(); }, 2000);
+}
+
+/* ================= EXISTING PAGE LOGIC ================= */
 // growth bars
 const B=[["1.0 · 2022",12],["2.0 · 2023",20],["3.0 · 2024",25],["4.0 · 2025",30],["5.0 · 2026",30.5]];
 const bx=document.getElementById('bars');
@@ -247,34 +431,28 @@ document.getElementById('cd').textContent=days>0?`⏳ ${days} days to go!`:(days
 const D="Bagerhat,Bandarban,Barguna,Barishal,Bhola,Bogura,Brahmanbaria,Chandpur,Chapai Nawabganj,Chattogram,Chuadanga,Cox's Bazar,Cumilla,Dhaka,Dinajpur,Faridpur,Feni,Gaibandha,Gazipur,Gopalganj,Habiganj,Jamalpur,Jashore,Jhalokati,Jhenaidah,Joypurhat,Khagrachhari,Khulna,Kishoreganj,Kurigram,Kushtia,Lakshmipur,Lalmonirhat,Madaripur,Magura,Manikganj,Meherpur,Moulvibazar,Munshiganj,Mymensingh,Naogaon,Narail,Narayanganj,Narsingdi,Natore,Netrokona,Nilphamari,Noakhali,Pabna,Panchagarh,Patuakhali,Pirojpur,Rajbari,Rajshahi,Rangamati,Rangpur,Satkhira,Shariatpur,Sherpur,Sirajganj,Sunamganj,Sylhet,Tangail,Thakurgaon".split(',');
 const sel=document.querySelector('[name=district]');D.forEach(d=>sel.add(new Option(d,d)));
 
-// ===== Google Sheet connection =====
-// Direct POST (no-cors). Works even on browsers/extensions that block script-tag methods.
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLNOKzB5FY9xKhxieg0XGRWzwScFal_Aq-rOBBr9CVSvQD_d_TTTk2Sj_ttiqGv2V8/exec";
-
-function sheetSave(obj){
-  return fetch(SCRIPT_URL,{                       // send the registration straight to Apps Script
-    method:"POST",
-    mode:"no-cors",                               // no-cors avoids the CORS preflight entirely
-    headers:{"Content-Type":"text/plain;charset=utf-8"},  // plain text so no preflight is triggered
-    body:JSON.stringify(obj),                     // the form fields as JSON
-    keepalive:true                                // let it finish even if the page navigates
-  });
-}
-
-// registration
+// registration (unchanged robust POST)
 document.getElementById('f').addEventListener('submit',async e=>{
 e.preventDefault();
-const f=e.target,r=Object.fromEntries(new FormData(f));delete r.agree;r.at=new Date().toISOString();  // collect fields
-const btn=f.querySelector('button[type=submit]');const old=btn.textContent;btn.disabled=true;btn.textContent='Submitting...';  // lock button
+const f=e.target,r=Object.fromEntries(new FormData(f));delete r.agree;r.at=new Date().toISOString();
+const btn=f.querySelector('button[type=submit]');const old=btn.textContent;btn.disabled=true;btn.textContent='Submitting...';
 let saved=false;
-try{ await sheetSave(Object.assign({action:"register"},r)); saved=true; }catch(x){ saved=false; }  // POST; success if it was sent
-btn.disabled=false;btn.textContent=old;                        // restore button
+try{ await apiSend(Object.assign({action:"register"},r)); saved=true; }catch(x){ saved=false; }
+btn.disabled=false;btn.textContent=old;
 const m=document.getElementById('mt');
 if(saved){m.textContent=`${r.name}, your registration for ${r.district} has been received. We will contact you at ${r.phone}.`;}
-else{const body=Object.entries(r).map(([k,v])=>k+': '+v).join('\n');                                  // email fallback
+else{const body=Object.entries(r).map(([k,v])=>k+': '+v).join('\n');
 m.innerHTML=`Almost done! Online saving is unavailable here, so please <a href="mailto:headde@daffodilvarsity.edu.bd?subject=${encodeURIComponent('ঐতিহ্যের হাট 5.0 Registration – '+r.district)}&body=${encodeURIComponent(body)}"><b>click here to send your details by email</b></a>.`;}
 f.style.display='none';const g=document.getElementById('msg');g.style.display='block';g.scrollIntoView({behavior:'smooth'});
 });
+
+// helper
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+// boot
+loadGallery();
+loadPartners();
+if(location.hash==='#admin'){ openAdmin(); }
 </script>
 </body>
 </html>
