@@ -249,7 +249,7 @@ const sel=document.querySelector('[name=district]');D.forEach(d=>sel.add(new Opt
 
 // ===== Google Sheet connection =====
 // Direct POST (no-cors). Works even on browsers/extensions that block script-tag methods.
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgnui-dZoMcmQRcNY6ZQXdlRKjShzWim38Ha3-PA-eQ1fQs263HZ3q4aL8ku9llArh/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcmTOQUv5BlyvM6MvGbbw16_Dvhv4kziFQU7QUyXlDFwUQSGgzjdLjKVk1nIlIEoAp/exec";
 
 function sheetSave(obj){
   return fetch(SCRIPT_URL,{                       // send the registration straight to Apps Script
