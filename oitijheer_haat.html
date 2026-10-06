@@ -42,6 +42,8 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #8f1623}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8f1623}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
+.count{display:none;align-items:center;gap:8px;background:var(--gold);color:#3a2600;border:0;padding:14px 24px;border-radius:40px;font:600 16px 'Poppins';margin-left:8px;box-shadow:0 5px 0 #a9771a;vertical-align:middle}
+.count b{font-weight:800;font-size:21px;line-height:1}
 .stats{margin-top:-40px;position:relative;z-index:2}
 .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
 .stat{background:var(--card);border:2px solid var(--gold);border-radius:16px;padding:20px;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.12)}
@@ -157,7 +159,7 @@ footer p{margin:4px 0}
 footer .c{color:var(--gold);font-weight:700}
 footer a.adminlink{opacity:.4;font-size:12px}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;color:#fff;font-size:20px;padding:20px;text-align:center}
-@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.row{flex-direction:column;align-items:flex-start;gap:6px}}
+@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.count{margin-left:0;margin-top:10px}.row{flex-direction:column;align-items:flex-start;gap:6px}}
 </style>
 </head>
 <body>
@@ -172,7 +174,7 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <h1>ঐতিহ্যের হাট</h1>
 <div class="tag">64 Districts. One Campus. One Heritage.</div>
 <div class="meta"><span>📅 21 November 2026</span><span>🕤 9:30 AM – 5:00 PM</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
-<a class="btn" href="#register">Register Your Stall</a><a class="btn alt" href="#about">Learn More</a>
+<a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span>
 <p id="cd" style="margin-top:22px;font-weight:600;color:var(--gold)"></p>
 </div>
 <button class="hnav p" onclick="gPrev()" aria-label="Previous photo">&#8249;</button>
@@ -309,7 +311,7 @@ footer a.adminlink{opacity:.4;font-size:12px}
 
 <script>
 // ===== Google Apps Script API =====
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNqBZwsD0GhkfpR7Qf1W9Zlv_AfcGQ4Iz6OObjl8GTauykTMRLkyyj_AoapOO7HLjaJQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLbxUIapYV5QHyRfPHGfT4X_WEK_vexKW41iWFi-e0XYrKyIZj0xO6Mvguu4jpLjmSKA/exec";
 
 // ===== Cloudinary (fast image CDN) =====
 const CLOUD_NAME   = "esw2numc";    // your Cloudinary cloud name
@@ -550,9 +552,20 @@ f.style.display='none';const g=document.getElementById('msg');g.style.display='b
 // helper
 function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
+// live registration count
+async function loadCount(){
+  const r=await apiGet({action:"getCount"});
+  if(r && typeof r.count==='number'){
+    document.getElementById('regnum').textContent=r.count;
+    document.getElementById('regcount').style.display='inline-flex';
+  }
+}
+
 // boot
 loadGallery();
 loadPartners();
+loadCount();
+setInterval(loadCount, 30000);   // refresh the count every 30 seconds
 if(location.hash==='#admin'){ openAdmin(); }
 </script>
 </body>
