@@ -38,7 +38,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .hero h1{font-size:clamp(54px,12vw,112px);font-weight:700;line-height:1.15;margin:8px 0;font-family:'Hind Siliguri','Poppins';text-shadow:3px 3px 0 var(--red)}
 .tag{font-size:clamp(17px,3vw,24px);font-family:'Poppins';font-style:italic;font-weight:500}
 .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
-.meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:12px;font-size:15px}
+.meta span{background:var(--green2);border:1px solid rgba(224,165,38,.75);padding:9px 16px;border-radius:12px;font-size:15px;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 #8f1623}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 #8f1623}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
@@ -58,7 +58,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .chip{background:var(--card);border-left:6px solid var(--red);padding:12px 16px;border-radius:10px;font-weight:500}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
 .card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:22px;position:relative}
-.card:before{content:"❀";position:absolute;right:14px;top:8px;color:var(--gold);font-size:22px}
+.card:before{display:none}
 .card h3{font-size:19px;color:var(--red);font-family:'Poppins';margin-bottom:6px;font-weight:600}
 .card p{margin:0;font-size:15px}
 .sched{max-width:720px;margin:auto}
@@ -246,8 +246,10 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <section style="background:var(--paper)"><div class="wrap">
 <div class="title"><h2>Who Joins Us</h2><i></i></div>
 <div class="join"><span>Students &amp; student entrepreneurs</span><span>Alumni</span><span>Business leaders &amp; chambers</span><span>Government &amp; SME-support organizations</span><span>Development partners</span><span>Diplomats</span><span>Media</span><span>The general public</span></div>
+<div id="sponsorsblock" style="display:none">
 <div class="title" style="margin-top:54px"><h2>Sponsors &amp; Partners</h2><i></i></div>
 <div class="marq" id="pmarq"><div class="mtrack" id="ptrack"></div></div>
+</div>
 </div></section>
 
 <section id="register" class="reg"><div class="wrap">
@@ -411,18 +413,17 @@ async function loadPartners(){
     if(logo){ ml.innerHTML=`<img class="mlogo" src="${logo.url}" alt="Department of Innovation & Entrepreneurship, DIU">`; if(ol) ol.style.display='none'; }
     else    { ml.innerHTML=''; if(ol) ol.style.display=''; }
   }
-  // everything else is a real sponsor / partner
+  // everything else is a real sponsor / partner that was uploaded
   const items=all.filter(p=>(p.caption||'').trim().toLowerCase()!=='main_logo');
+  const block=document.getElementById('sponsorsblock');
   const track=document.getElementById('ptrack');
-  let cells;
-  if(items.length){
-    cells=items.map(p=>`<div class="logo">${p.url?`<img src="${p.url}" alt="${esc(p.caption||'')}">`:`<b>${esc(p.caption||'Partner')}</b>`}</div>`);
-  }else{
-    cells=[`<div class="logo"><b>BRAC Bank PLC</b></div>`];  // fallback until logos are uploaded
-  }
+  if(!items.length){ if(block) block.style.display='none'; track.innerHTML=''; return; } // nothing uploaded yet -> hide the whole section
+  if(block) block.style.display='';
+  const cells=items.map(p=>`<div class="logo">${p.url?`<img src="${p.url}" alt="${esc(p.caption||'')}">`:`<b>${esc(p.caption||'Partner')}</b>`}</div>`);
   // duplicate the row so the scroll loops seamlessly
   track.innerHTML = cells.join("") + cells.join("");
-  if(cells.length<=1){ track.style.animation="none"; track.style.justifyContent="center"; track.style.margin="auto"; }
+  if(items.length<=1){ track.style.animation="none"; track.style.justifyContent="center"; track.style.margin="auto"; }
+  else { track.style.animation=""; track.style.justifyContent=""; track.style.margin=""; }
 }
 
 /* ================= ADMIN ================= */
