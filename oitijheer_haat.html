@@ -51,7 +51,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .title h2{font-size:clamp(28px,5vw,40px);color:var(--green);font-weight:700}
 :root[data-theme="dark"] .title h2{color:var(--gold)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .title h2{color:var(--gold)}}
-.title i{display:block;width:140px;height:10px;margin:10px auto 0;background:repeating-linear-gradient(90deg,var(--red) 0 10px,var(--gold) 10px 16px,var(--green) 16px 26px,transparent 26px 30px)}
+.title i{display:none}
 .two{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
 .about p{font-size:18px}
 .chips{display:grid;gap:10px}
@@ -86,7 +86,8 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .hero .hslides{position:absolute;inset:0;z-index:0}
 .hero .hs{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.1s ease}
 .hero .hs.on{opacity:1}
-.hero .hoverlay{position:absolute;inset:0;z-index:1;display:none;background:linear-gradient(160deg,rgba(6,64,42,.88),rgba(11,93,59,.64))}
+.hero .hoverlay{position:absolute;inset:0;z-index:1;display:none;background:linear-gradient(160deg,rgba(6,64,42,.62),rgba(11,93,59,.4))}
+.hero.hasphotos .wrap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .hero.hasphotos .hoverlay{display:block}
 .hero.hasphotos:before{opacity:.05}
 .hero.hasphotos .sun{opacity:.3}
@@ -97,6 +98,23 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .hdots{position:absolute;bottom:64px;left:0;right:0;z-index:3;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:0 66px}
 .hdots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.45);cursor:pointer;padding:0;transition:width .25s,background .25s}
 .hdots button.on{background:var(--gold);width:26px;border-radius:5px}
+
+/* ---------- hero main logo ---------- */
+.mlogo{max-height:78px;max-width:300px;object-fit:contain;display:block;margin:2px auto 10px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+
+/* ---------- gallery section carousel ---------- */
+.gcar{position:relative;max-width:1040px;margin:auto;border-radius:20px;overflow:hidden;border:3px solid var(--card);box-shadow:0 14px 34px rgba(0,0,0,.25);background:#0b0b0b}
+.gcar .gtrack{display:flex;transition:transform .6s cubic-bezier(.65,.05,.2,1);height:clamp(300px,52vw,520px)}
+.gcar .gslide{min-width:100%;position:relative;display:flex;align-items:flex-end;cursor:pointer}
+.gcar .gslide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gcar .gslide em{position:absolute;inset:0;display:grid;place-items:center;font-size:70px;font-style:normal;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}
+.gcar .cap{position:relative;width:100%;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:14px}
+.gnav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.gnav:hover{background:rgba(0,0,0,.7)}
+.gnav.p{left:10px}.gnav.n{right:10px}
+.gdots{display:flex;gap:7px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.gdots button{width:9px;height:9px;border-radius:50%;border:0;background:var(--line);cursor:pointer;padding:0;transition:width .25s,background .25s}
+.gdots button.on{background:var(--red);width:24px;border-radius:5px}
 
 /* ---------- partners marquee ---------- */
 .marq{overflow:hidden;position:relative;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -145,11 +163,11 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <body>
 <nav><div class="wrap"><b class="bn">ঐতিহ্যের হাট</b>
 <ul><li><a href="#about">About</a></li><li><a href="#program">Program</a></li><li><a href="#growth">Our Impact</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#register">Register</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
-<div class="border"></div>
 
-<header class="hero" id="gallery"><div class="hslides" id="hslides"></div><div class="hoverlay"></div><div class="sun"></div><div class="wrap">
+<header class="hero"><div class="hslides" id="hslides"></div><div class="hoverlay"></div><div class="sun"></div><div class="wrap">
 <span class="ribbon">🎉 5th EDITION · COMING UP</span>
-<div class="org">Department of Innovation &amp; Entrepreneurship · Daffodil International University</div>
+<div class="mainlogo" id="mainlogo"></div>
+<div class="org" id="orgline">Department of Innovation &amp; Entrepreneurship · Daffodil International University</div>
 <div class="brand">BRANDING BANGLADESH</div>
 <h1>ঐতিহ্যের হাট</h1>
 <div class="tag">64 Districts. One Campus. One Heritage.</div>
@@ -214,6 +232,17 @@ footer a.adminlink{opacity:.4;font-size:12px}
 
 
 
+<section id="gallery" class="dots"><div class="wrap">
+<div class="title"><h2>Gallery · Previous Editions</h2><i></i></div>
+<div class="gcar" id="gcar">
+  <div class="gtrack" id="gtrack"></div>
+  <button class="gnav p" onclick="scPrev()" aria-label="Previous">&#8249;</button>
+  <button class="gnav n" onclick="scNext()" aria-label="Next">&#8250;</button>
+</div>
+<div class="gdots" id="gdots"></div>
+<p class="note" style="text-align:center;font-size:13px;opacity:.7;margin-top:12px">Tap a photo to enlarge.</p>
+</div></section>
+
 <section style="background:var(--paper)"><div class="wrap">
 <div class="title"><h2>Who Joins Us</h2><i></i></div>
 <div class="join"><span>Students &amp; student entrepreneurs</span><span>Alumni</span><span>Business leaders &amp; chambers</span><span>Government &amp; SME-support organizations</span><span>Development partners</span><span>Diplomats</span><span>Media</span><span>The general public</span></div>
@@ -266,7 +295,6 @@ footer a.adminlink{opacity:.4;font-size:12px}
 </div>
 </div></section>
 
-<div class="border"></div>
 <footer id="contact"><div class="wrap">
 <h3 class="bn" style="font-size:26px;color:var(--gold)">ঐতিহ্যের হাট ৫.০</h3>
 <p class="c">Save the date: 21 November 2026. Come celebrate Bangladesh, one district at a time.</p>
@@ -299,18 +327,26 @@ function apiSend(obj){
   });
 }
 
-/* ================= HERO PHOTO SLIDESHOW ================= */
-let GAL=[], gi=0, gTimer=null;
+/* ================= GALLERY: hero banner + section carousel ================= */
+const PLACEHOLDER=[  // shown in the gallery section only, until real photos are uploaded
+{c:"Our first haat, 38 districts",e:"🏺"},{c:"Stalls full of regional sweets",e:"🍯"},
+{c:"Handloom and nakshi kantha",e:"🧵"},{c:"Crowds on campus",e:"🏪"},
+{c:"Folk dance and music",e:"🎭"},{c:"Best district awards",e:"🏆"}];
+let GAL=[], gi=0, gTimer=null;      // hero banner slideshow (real photos only)
+let GSEC=[], si=0, sTimer=null;     // gallery section carousel
+
 async function loadGallery(){
   const res=await apiGet({action:"getGallery"});
-  GAL=(res&&res.items)?res.items.filter(x=>x.url):[];   // only real uploaded photos appear in the hero
-  buildGallery();
+  const real=(res&&res.items)?res.items.filter(x=>x.url):[];
+  GAL=real;                           buildHero();
+  GSEC=real.length?real:PLACEHOLDER;  buildSection();
 }
-function buildGallery(){
+
+/* ----- hero banner slideshow ----- */
+function buildHero(){
   const hero=document.querySelector('.hero');
-  const slides=document.getElementById('hslides');
-  const dots=document.getElementById('hdots');
-  if(!GAL.length){ hero.classList.remove('hasphotos'); slides.innerHTML=''; dots.innerHTML=''; return; } // no photos: keep the plain green banner
+  const slides=document.getElementById('hslides'), dots=document.getElementById('hdots');
+  if(!GAL.length){ hero.classList.remove('hasphotos'); slides.innerHTML=''; dots.innerHTML=''; return; } // no photos: plain green banner
   hero.classList.add('hasphotos');
   slides.innerHTML=GAL.map((p,i)=>`<div class="hs ${i===0?'on':''}" style="background-image:url('${(p.url||'').replace(/'/g,'')}')"></div>`).join("");
   dots.innerHTML=GAL.map((_,i)=>`<button class="${i===0?'on':''}" onclick="gGo(${i})" aria-label="Photo ${i+1}"></button>`).join("");
@@ -324,7 +360,6 @@ function gGo(i){ if(!GAL.length) return; gi=(i+GAL.length)%GAL.length; gShow(); 
 function gNext(){ gGo(gi+1); }
 function gPrev(){ gGo(gi-1); }
 function gAuto(){ clearInterval(gTimer); if(GAL.length>1) gTimer=setInterval(()=>gGo(gi+1),4500); }
-// pause on hover, swipe on touch (across the whole hero)
 (function(){const el=document.querySelector('.hero');
   el.addEventListener('mouseenter',()=>clearInterval(gTimer));
   el.addEventListener('mouseleave',gAuto);
@@ -332,10 +367,52 @@ function gAuto(){ clearInterval(gTimer); if(GAL.length>1) gTimer=setInterval(()=
   el.addEventListener('touchend',e=>{if(x===null)return;const dx=e.changedTouches[0].clientX-x;if(dx<-40)gNext();else if(dx>40)gPrev();x=null;});
 })();
 
+/* ----- gallery section carousel ----- */
+function buildSection(){
+  const t=document.getElementById('gtrack'), dots=document.getElementById('gdots');
+  if(!t) return;
+  t.innerHTML=GSEC.map(p=>`
+    <div class="gslide" onclick="gcEnlarge('${(p.url||'').replace(/'/g,"")}','${(p.caption||p.c||'').replace(/'/g,"")}','${p.e||''}')">
+      ${p.url?`<img src="${p.url}" alt="" loading="lazy">`:`<em>${p.e||'🏮'}</em>`}
+      <div class="cap">${esc(p.caption||p.c||'')}</div>
+    </div>`).join("");
+  dots.innerHTML=GSEC.map((_,i)=>`<button class="${i===0?'on':''}" onclick="scGo(${i})" aria-label="Slide ${i+1}"></button>`).join("");
+  si=0; scShow(); scAuto();
+}
+function scShow(){
+  document.getElementById('gtrack').style.transform=`translateX(-${si*100}%)`;
+  document.querySelectorAll('#gdots button').forEach((d,i)=>d.classList.toggle('on',i===si));
+}
+function scGo(i){ si=(i+GSEC.length)%GSEC.length; scShow(); scAuto(); }
+function scNext(){ scGo(si+1); }
+function scPrev(){ scGo(si-1); }
+function scAuto(){ clearInterval(sTimer); if(GSEC.length>1) sTimer=setInterval(()=>scGo(si+1),5000); }
+function gcEnlarge(url,cap,em){
+  const l=document.getElementById('lb');
+  l.innerHTML=url?`<img src="${url}" style="max-width:100%;max-height:90vh">`
+                 :`<div><div style="font-size:90px">${em||'🏮'}</div>${esc(cap)}</div>`;
+  l.style.display='flex';
+}
+(function(){const el=document.getElementById('gcar'); if(!el) return;
+  el.addEventListener('mouseenter',()=>clearInterval(sTimer));
+  el.addEventListener('mouseleave',scAuto);
+  let x=null; el.addEventListener('touchstart',e=>x=e.touches[0].clientX,{passive:true});
+  el.addEventListener('touchend',e=>{if(x===null)return;const dx=e.changedTouches[0].clientX-x;if(dx<-40)scNext();else if(dx>40)scPrev();x=null;});
+})();
+
 /* ================= PARTNERS MARQUEE ================= */
 async function loadPartners(){
   const res=await apiGet({action:"getPartners"});
-  const items=(res&&res.items)?res.items:[];
+  const all=(res&&res.items)?res.items:[];
+  // the item captioned "main_logo" is the department logo shown in the hero, not a sponsor
+  const logo=all.find(p=>(p.caption||'').trim().toLowerCase()==='main_logo' && p.url);
+  const ml=document.getElementById('mainlogo'), ol=document.getElementById('orgline');
+  if(ml){
+    if(logo){ ml.innerHTML=`<img class="mlogo" src="${logo.url}" alt="Department of Innovation & Entrepreneurship, DIU">`; if(ol) ol.style.display='none'; }
+    else    { ml.innerHTML=''; if(ol) ol.style.display=''; }
+  }
+  // everything else is a real sponsor / partner
+  const items=all.filter(p=>(p.caption||'').trim().toLowerCase()!=='main_logo');
   const track=document.getElementById('ptrack');
   let cells;
   if(items.length){
