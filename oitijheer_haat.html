@@ -311,6 +311,26 @@ footer a.adminlink{opacity:.4;font-size:12px}
 // ===== Google Apps Script API =====
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwNqBZwsD0GhkfpR7Qf1W9Zlv_AfcGQ4Iz6OObjl8GTauykTMRLkyyj_AoapOO7HLjaJQ/exec";
 
+// ===== Cloudinary (fast image CDN) =====
+const CLOUD_NAME   = "esw2numc";    // your Cloudinary cloud name
+const CLOUD_PRESET = "oitijheer";   // your unsigned upload preset
+// add on-the-fly optimisation (auto format + auto quality) to any Cloudinary URL for faster loading
+function cldOpt(url){
+  return (typeof url==='string' && url.indexOf('/image/upload/')>-1)
+    ? url.replace('/image/upload/','/image/upload/f_auto,q_auto/')
+    : url;
+}
+// upload one image (as a data URL) straight to Cloudinary, return its CDN link
+async function cloudinaryUpload(dataUrl){
+  const fd=new FormData();
+  fd.append("file", dataUrl);
+  fd.append("upload_preset", CLOUD_PRESET);
+  const res=await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,{method:"POST",body:fd});
+  const j=await res.json();
+  if(!j.secure_url){ throw new Error((j.error&&j.error.message)||"Cloudinary upload failed"); }
+  return j.secure_url;
+}
+
 // READ from the API (gallery / partners lists). Returns parsed JSON, or null on failure.
 async function apiGet(params){
   try{
@@ -327,6 +347,14 @@ function apiSend(obj){
     headers:{"Content-Type":"text/plain;charset=utf-8"},
     body:JSON.stringify(obj)
   });
+}
+// readable call for admin actions (upload/delete). Payload is tiny now, so a GET works and we can SEE the server reply.
+async function apiCall(params){
+  try{
+    const q=new URLSearchParams(params).toString();
+    const res=await fetch(SCRIPT_URL+"?"+q);
+    return await res.json();
+  }catch(x){ return {error:"network error: "+x.message}; }
 }
 
 /* ================= GALLERY: hero banner + section carousel ================= */
@@ -350,7 +378,7 @@ function buildHero(){
   const slides=document.getElementById('hslides'), dots=document.getElementById('hdots');
   if(!GAL.length){ hero.classList.remove('hasphotos'); slides.innerHTML=''; dots.innerHTML=''; return; } // no photos: plain green banner
   hero.classList.add('hasphotos');
-  slides.innerHTML=GAL.map((p,i)=>`<div class="hs ${i===0?'on':''}" style="background-image:url('${(p.url||'').replace(/'/g,'')}')"></div>`).join("");
+  slides.innerHTML=GAL.map((p,i)=>`<div class="hs ${i===0?'on':''}" style="background-image:url('${cldOpt(p.url||'').replace(/'/g,'')}')"></div>`).join("");
   dots.innerHTML=GAL.map((_,i)=>`<button class="${i===0?'on':''}" onclick="gGo(${i})" aria-label="Photo ${i+1}"></button>`).join("");
   gi=0; gShow(); gAuto();
 }
@@ -374,8 +402,8 @@ function buildSection(){
   const t=document.getElementById('gtrack'), dots=document.getElementById('gdots');
   if(!t) return;
   t.innerHTML=GSEC.map(p=>`
-    <div class="gslide" onclick="gcEnlarge('${(p.url||'').replace(/'/g,"")}','${(p.caption||p.c||'').replace(/'/g,"")}','${p.e||''}')">
-      ${p.url?`<img src="${p.url}" alt="" loading="lazy">`:`<em>${p.e||'🏮'}</em>`}
+    <div class="gslide" onclick="gcEnlarge('${cldOpt(p.url||'').replace(/'/g,"")}','${(p.caption||p.c||'').replace(/'/g,"")}','${p.e||''}')">
+      ${p.url?`<img src="${cldOpt(p.url)}" alt="" loading="lazy">`:`<em>${p.e||'🏮'}</em>`}
       <div class="cap">${esc(p.caption||p.c||'')}</div>
     </div>`).join("");
   dots.innerHTML=GSEC.map((_,i)=>`<button class="${i===0?'on':''}" onclick="scGo(${i})" aria-label="Slide ${i+1}"></button>`).join("");
@@ -410,7 +438,7 @@ async function loadPartners(){
   const logo=all.find(p=>(p.caption||'').trim().toLowerCase()==='main_logo' && p.url);
   const ml=document.getElementById('mainlogo'), ol=document.getElementById('orgline');
   if(ml){
-    if(logo){ ml.innerHTML=`<img class="mlogo" src="${logo.url}" alt="Department of Innovation & Entrepreneurship, DIU">`; if(ol) ol.style.display='none'; }
+    if(logo){ ml.innerHTML=`<img class="mlogo" src="${cldOpt(logo.url)}" alt="Department of Innovation & Entrepreneurship, DIU">`; if(ol) ol.style.display='none'; }
     else    { ml.innerHTML=''; if(ol) ol.style.display=''; }
   }
   // everything else is a real sponsor / partner that was uploaded
@@ -419,7 +447,7 @@ async function loadPartners(){
   const track=document.getElementById('ptrack');
   if(!items.length){ if(block) block.style.display='none'; track.innerHTML=''; return; } // nothing uploaded yet -> hide the whole section
   if(block) block.style.display='';
-  const cells=items.map(p=>`<div class="logo">${p.url?`<img src="${p.url}" alt="${esc(p.caption||'')}">`:`<b>${esc(p.caption||'Partner')}</b>`}</div>`);
+  const cells=items.map(p=>`<div class="logo">${p.url?`<img src="${cldOpt(p.url)}" alt="${esc(p.caption||'')}">`:`<b>${esc(p.caption||'Partner')}</b>`}</div>`);
   // duplicate the row so the scroll loops seamlessly
   track.innerHTML = cells.join("") + cells.join("");
   if(items.length<=1){ track.style.animation="none"; track.style.justifyContent="center"; track.style.margin="auto"; }
@@ -438,7 +466,7 @@ function shrink(file,maxW,asPng){
       const c=document.createElement('canvas'); c.width=w; c.height=h;
       c.getContext('2d').drawImage(img,0,0,w,h); URL.revokeObjectURL(url);
       const type=asPng?'image/png':'image/jpeg';
-      resolve({data:c.toDataURL(type,asPng?undefined:0.82).split(',')[1], type});
+      resolve(c.toDataURL(type,asPng?undefined:0.82));
     };
     img.onerror=reject; img.src=url;
   });
@@ -454,12 +482,18 @@ async function adminUpload(kind){
   if(!fileEl.files[0]){ msg.className='amsg err'; msg.textContent='Choose an image file.'; return; }
   msg.textContent='Uploading...';
   try{
-    const {data,type}=await shrink(fileEl.files[0], isP?700:1600, isP); // logos as PNG (keep transparency)
-    await apiSend({action:"upload", kind, password:pass, mime:type, data, caption:capEl.value||""});
-    msg.className='amsg ok'; msg.textContent='Uploaded. Refreshing...';
-    fileEl.value=''; capEl.value='';
-    setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners();
-      msg.textContent='Done. If it did not appear, check the password and try again.'; }, 2500);
+    const dataUrl=await shrink(fileEl.files[0], isP?700:1600, isP); // logos as PNG (keep transparency)
+    msg.textContent='Uploading to Cloudinary...';
+    const url=await cloudinaryUpload(dataUrl);                        // upload to the fast CDN
+    msg.textContent='Saving to sheet...';
+    const r=await apiCall({action:"upload", kind, password:pass, url, caption:capEl.value||""});
+    if(r && r.success){
+      msg.className='amsg ok'; msg.textContent='Uploaded. Refreshing...';
+      fileEl.value=''; capEl.value='';
+      setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners(); msg.textContent='Done.'; }, 1500);
+    } else {
+      msg.className='amsg err'; msg.textContent='Saved to Cloudinary but sheet rejected it: '+((r&&r.error)||'no response. Did you redeploy the script as a NEW version?');
+    }
   }catch(x){ msg.className='amsg err'; msg.textContent='Upload failed: '+x.message; }
 }
 async function loadAdminLists(){
@@ -478,8 +512,9 @@ async function adminDelete(kind,id){
   const pass=document.getElementById('apass').value.trim();
   if(!pass){ alert('Enter the admin password first.'); return; }
   if(!confirm('Delete this item?')) return;
-  await apiSend({action:"delete", kind, id, password:pass});
-  setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners(); }, 2000);
+  const r=await apiCall({action:"delete", kind, id, password:pass});
+  if(r && r.error){ alert('Delete failed: '+r.error); return; }
+  setTimeout(()=>{ loadAdminLists(); loadGallery(); loadPartners(); }, 1200);
 }
 
 /* ================= EXISTING PAGE LOGIC ================= */
