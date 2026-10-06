@@ -83,8 +83,8 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .call b{display:block;font:800 34px 'Poppins';color:var(--gold)}
 
 /* ---------- gallery carousel ---------- */
-.gcar{position:relative;max-width:900px;margin:auto;border-radius:18px;overflow:hidden;border:3px solid var(--card);box-shadow:0 12px 30px rgba(0,0,0,.22);background:#0b0b0b}
-.gcar .gtrack{display:flex;transition:transform .6s cubic-bezier(.65,.05,.2,1);height:clamp(240px,46vw,460px)}
+.gcar{position:relative;max-width:1080px;margin:auto;border-radius:20px;overflow:hidden;border:3px solid var(--card);box-shadow:0 14px 34px rgba(0,0,0,.25);background:#0b0b0b}
+.gcar .gtrack{display:flex;transition:transform .6s cubic-bezier(.65,.05,.2,1);height:clamp(320px,58vw,580px)}
 .gcar .gslide{min-width:100%;position:relative;display:flex;align-items:flex-end;cursor:pointer}
 .gcar .gslide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .gcar .gslide em{position:absolute;inset:0;display:grid;place-items:center;font-size:70px;font-style:normal;background:linear-gradient(135deg,var(--green),var(--green2));color:#fff}
@@ -162,6 +162,17 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="stat"><b>7M+</b><small>Expected digital reach</small></div>
 <div class="stat"><b>৳50 lakh+</b><small>Expected sales</small></div></div></div>
 
+<section id="gallery" class="dots"><div class="wrap">
+<div class="title"><h2>Gallery · Previous Editions</h2><i></i></div>
+<div class="gcar" id="gcar">
+  <div class="gtrack" id="gtrack"></div>
+  <button class="gnav p" onclick="gPrev()" aria-label="Previous">&#8249;</button>
+  <button class="gnav n" onclick="gNext()" aria-label="Next">&#8250;</button>
+</div>
+<div class="gdots" id="gdots"></div>
+<p class="note" style="text-align:center;font-size:13px;opacity:.7;margin-top:12px">Tap a photo to enlarge.</p>
+</div></section>
+
 <section id="about" class="dots"><div class="wrap">
 <div class="title"><h2>About ঐতিহ্যের হাট</h2><i></i></div>
 <div class="two">
@@ -206,16 +217,7 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div><b>All 64</b>from 38 districts in 2022 to all of Bangladesh in 2026</div></div>
 </div></section>
 
-<section id="gallery" class="dots"><div class="wrap">
-<div class="title"><h2>Gallery · Previous Editions</h2><i></i></div>
-<div class="gcar" id="gcar">
-  <div class="gtrack" id="gtrack"></div>
-  <button class="gnav p" onclick="gPrev()" aria-label="Previous">&#8249;</button>
-  <button class="gnav n" onclick="gNext()" aria-label="Next">&#8250;</button>
-</div>
-<div class="gdots" id="gdots"></div>
-<p class="note" style="text-align:center;font-size:13px;opacity:.7;margin-top:12px">Tap a photo to enlarge.</p>
-</div></section>
+
 
 <section style="background:var(--paper)"><div class="wrap">
 <div class="title"><h2>Who Joins Us</h2><i></i></div>
