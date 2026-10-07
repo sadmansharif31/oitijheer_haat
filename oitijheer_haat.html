@@ -33,6 +33,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .sun{position:absolute;right:-90px;top:-90px;width:300px;height:300px;border-radius:50%;background:var(--blue);opacity:.9;box-shadow:0 0 0 14px rgba(35,162,74,.35)}
 .hero .wrap{position:relative;z-index:2}
 .ribbon{display:inline-block;background:var(--blue);color:#fff;font-weight:700;padding:5px 18px;border-radius:30px;font-size:14px;margin-bottom:6px}
+.initiative{display:inline-block;background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;font:700 clamp(13px,2vw,16px) 'Poppins';padding:9px 22px;border-radius:30px;margin:6px auto 20px;letter-spacing:.3px;box-shadow:0 6px 18px rgba(0,0,0,.4)}
 .org{font-size:12px;letter-spacing:.14em;opacity:.85;text-transform:uppercase}
 .brand{font-size:15px;letter-spacing:.3em;color:var(--gold);margin:6px 0 0;font-weight:600}
 .hero h1{font-size:clamp(54px,12vw,112px);font-weight:700;line-height:1.15;margin:8px 0;font-family:'Hind Siliguri','Poppins';text-shadow:3px 3px 0 var(--red)}
@@ -188,6 +189,7 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="brand" id="brandline">BRANDING BANGLADESH</div>
 <div class="haatlogo" id="haatlogo"></div>
 <h1 id="haattitle">ঐতিহ্যের হাট</h1>
+<div class="initiative">Initiative of Department of Innovation &amp; Entrepreneurship</div>
 <div class="meta"><span>📅 21 November 2026</span><span>🕤 9:30 AM – 5:00 PM</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
 <a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span>
 <p id="cd" style="margin-top:22px;font-weight:600;color:#fff"></p>
@@ -280,7 +282,7 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <form id="f">
 <div class="f"><label>Full name *</label><input name="name" required></div>
 <div class="f"><label>Student ID *</label><input name="sid" required placeholder="e.g. 221-15-1234"></div>
-<div class="f"><label>Department / Batch *</label><input name="dept" required></div>
+<div class="f"><label>Department *</label><input name="dept" required></div>
 <div class="f"><label>Phone *</label><input name="phone" type="tel" required pattern="[0-9+\- ]{10,16}" placeholder="01XXXXXXXXX"></div>
 <div class="f"><label>Email *</label><input name="email" type="email" required></div>
 <div class="f"><label>Division *</label><select name="team" required><option value="">Select division</option><option>Barisal</option><option>Chattogram</option><option>Dhaka</option><option>Khulna</option><option>Mymensingh</option><option>Rajshahi</option><option>Rangpur</option><option>Sylhet</option></select></div>
