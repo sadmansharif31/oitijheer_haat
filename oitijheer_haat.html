@@ -95,7 +95,7 @@ tr.hl td{background:var(--blue);color:#fff;font-weight:700}
 .hero .hoverlay{position:absolute;inset:0;z-index:1;display:none;background:radial-gradient(125% 88% at 50% 40%, rgba(3,30,20,.9) 0%, rgba(8,55,70,.56) 48%, rgba(10,58,100,.34) 100%)}
 .hero.hasphotos .wrap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 /* over photos, give the tagline and countdown a solid backing so they stay readable */
-.hero.hasphotos #cd{background:var(--green2);color:#fff;padding:7px 18px;border-radius:30px;box-shadow:0 4px 14px rgba(0,0,0,.35);width:max-content;max-width:90%;margin-left:auto;margin-right:auto}
+.cd{display:inline-flex;align-items:center;gap:8px;background:#f5a524;color:#3a2600;border:0;padding:14px 24px;border-radius:40px;font:700 16px 'Poppins';margin-left:8px;box-shadow:0 5px 0 #b9770a;vertical-align:middle}
 .hero.hasphotos .hoverlay{display:block}
 .hero.hasphotos:before{opacity:.05}
 .hero.hasphotos .sun{opacity:.3}
@@ -177,7 +177,7 @@ footer p{margin:4px 0}
 footer .c{color:var(--gold);font-weight:700}
 footer a.adminlink{opacity:.4;font-size:12px}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;color:#fff;font-size:20px;padding:20px;text-align:center}
-@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.count{margin-left:0;margin-top:10px}.row{flex-direction:column;align-items:flex-start;gap:6px}.mlogo{width:40vw;margin:16px auto 8px}}
+@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.count{margin-left:0;margin-top:10px}.cd{margin-left:0;margin-top:10px}.row{flex-direction:column;align-items:flex-start;gap:6px}.mlogo{width:40vw;margin:16px auto 8px}}
 </style>
 </head>
 <body>
@@ -185,16 +185,14 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <ul><li><a href="#about">About</a></li><li><a href="#program">Program</a></li><li><a href="#growth">Our Impact</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#register">Register</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
 <header class="hero"><div class="hslides" id="hslides"></div><div class="hoverlay"></div><div class="sun"></div><div class="wrap">
-<span class="ribbon">🎉 5th EDITION · COMING UP</span>
 <div class="mainlogo" id="mainlogo"></div>
 <div class="org" id="orgline">Department of Innovation &amp; Entrepreneurship · Daffodil International University</div>
 <div class="brand" id="brandline">BRANDING BANGLADESH</div>
 <div class="haatlogo" id="haatlogo"></div>
 <h1 id="haattitle">ঐতিহ্যের হাট</h1>
 <div class="initiative"><span class="ini-sub">An Initiative of</span><b>Department of Innovation &amp; Entrepreneurship</b></div>
-<div class="meta"><span>📅 21 November 2026</span><span>🕤 9:30 AM – 5:00 PM</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
-<a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span>
-<p id="cd" style="margin-top:22px;font-weight:600;color:#fff"></p>
+<div class="meta"><span>📅 21 November 2026</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
+<a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span><span class="cd" id="cd" aria-live="polite"></span>
 </div>
 <button class="hnav p" onclick="gPrev()" aria-label="Previous photo">&#8249;</button>
 <button class="hnav n" onclick="gNext()" aria-label="Next photo">&#8250;</button>
