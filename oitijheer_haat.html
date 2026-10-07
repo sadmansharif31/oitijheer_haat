@@ -105,7 +105,11 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .hdots button.on{background:var(--gold);width:26px;border-radius:5px}
 
 /* ---------- hero main logo ---------- */
-.mlogo{max-height:78px;max-width:300px;object-fit:contain;display:block;margin:2px auto 10px;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5))}
+.mlogo{max-height:60px;max-width:260px;object-fit:contain;display:block;margin:2px auto 12px;background:#fff;padding:10px 18px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+/* nav brand logo + big hero wordmark */
+.navlogo{height:36px;width:auto;display:block}
+.haatlogo{display:none;margin:4px auto 8px}
+.haatimg{width:auto;max-width:92%;max-height:clamp(120px,24vw,230px);display:block;margin:0 auto;filter:drop-shadow(0 3px 12px rgba(0,0,0,.45))}
 
 /* ---------- gallery section carousel ---------- */
 .gcar{position:relative;max-width:1040px;margin:auto;border-radius:20px;overflow:hidden;border:3px solid var(--card);box-shadow:0 14px 34px rgba(0,0,0,.25);background:#0b0b0b}
@@ -125,7 +129,7 @@ tr.hl td{background:var(--red);color:#fff;font-weight:700}
 .marq{overflow:hidden;position:relative;padding:12px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marq .mtrack{display:flex;gap:34px;width:max-content;animation:scrollx 30s linear infinite}
 .marq:hover .mtrack{animation-play-state:paused}
-.marq .logo{height:84px;min-width:150px;display:flex;align-items:center;justify-content:center;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:12px 24px}
+.marq .logo{height:84px;min-width:150px;display:flex;align-items:center;justify-content:center;background:#fff;border:1.5px solid rgba(0,0,0,.08);border-radius:14px;padding:12px 24px}
 .marq .logo img{max-height:56px;max-width:170px;object-fit:contain}
 .marq .logo b{font-family:'Poppins';font-weight:700;color:#0e5da8;font-size:20px;white-space:nowrap}
 @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -166,15 +170,16 @@ footer a.adminlink{opacity:.4;font-size:12px}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><b class="bn">ঐতিহ্যের হাট</b>
+<nav><div class="wrap"><b class="bn" id="navbrand">ঐতিহ্যের হাট</b>
 <ul><li><a href="#about">About</a></li><li><a href="#program">Program</a></li><li><a href="#growth">Our Impact</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#register">Register</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
 <header class="hero"><div class="hslides" id="hslides"></div><div class="hoverlay"></div><div class="sun"></div><div class="wrap">
 <span class="ribbon">🎉 5th EDITION · COMING UP</span>
 <div class="mainlogo" id="mainlogo"></div>
 <div class="org" id="orgline">Department of Innovation &amp; Entrepreneurship · Daffodil International University</div>
-<div class="brand">BRANDING BANGLADESH</div>
-<h1>ঐতিহ্যের হাট</h1>
+<div class="brand" id="brandline">BRANDING BANGLADESH</div>
+<div class="haatlogo" id="haatlogo"></div>
+<h1 id="haattitle">ঐতিহ্যের হাট</h1>
 <div class="meta"><span>📅 21 November 2026</span><span>🕤 9:30 AM – 5:00 PM</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
 <a class="btn" href="#register">Register Your Stall</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">0</b> registered</span>
 <p id="cd" style="margin-top:22px;font-weight:600;color:var(--gold)"></p>
@@ -440,15 +445,33 @@ function gcEnlarge(url,cap,em){
 async function loadPartners(){
   const res=await apiGet({action:"getPartners"});
   const all=(res&&res.items)?res.items:[];
-  // the item captioned "main_logo" is the department logo shown in the hero, not a sponsor
-  const logo=all.find(p=>(p.caption||'').trim().toLowerCase()==='main_logo' && p.url);
+  const cap=p=>(p.caption||'').trim().toLowerCase();
+  // "main_logo" = department logo (hero sub-badge).  "main_haat" = the Oitijjher Haat wordmark (nav + big hero title).
+  const logo=all.find(p=>cap(p)==='main_logo' && p.url);
+  const haat=all.find(p=>cap(p)==='main_haat' && p.url);
+
   const ml=document.getElementById('mainlogo'), ol=document.getElementById('orgline');
   if(ml){
     if(logo){ ml.innerHTML=`<img class="mlogo" src="${cldOpt(logo.url)}" alt="Department of Innovation & Entrepreneurship, DIU">`; if(ol) ol.style.display='none'; }
     else    { ml.innerHTML=''; if(ol) ol.style.display=''; }
   }
+
+  // Oitijjher Haat wordmark -> nav brand + big hero title (Branding Bangladesh is already in the logo)
+  const nav=document.getElementById('navbrand');
+  const hl=document.getElementById('haatlogo'), ht=document.getElementById('haattitle'), bl=document.getElementById('brandline');
+  if(haat){
+    if(nav) nav.innerHTML=`<img class="navlogo" src="${cldOpt(haat.url)}" alt="Oitijjher Haat">`;
+    if(hl){ hl.innerHTML=`<img class="haatimg" src="${cldOpt(haat.url)}" alt="Oitijjher Haat - Branding Bangladesh">`; hl.style.display='block'; }
+    if(ht) ht.style.display='none';
+    if(bl) bl.style.display='none';
+  } else {
+    if(hl){ hl.innerHTML=''; hl.style.display='none'; }
+    if(ht) ht.style.display='';
+    if(bl) bl.style.display='';
+  }
+
   // everything else is a real sponsor / partner that was uploaded
-  const items=all.filter(p=>(p.caption||'').trim().toLowerCase()!=='main_logo');
+  const items=all.filter(p=>cap(p)!=='main_logo' && cap(p)!=='main_haat');
   const block=document.getElementById('sponsorsblock');
   const track=document.getElementById('ptrack');
   if(!items.length){ if(block) block.style.display='none'; track.innerHTML=''; return; } // nothing uploaded yet -> hide the whole section
