@@ -46,9 +46,9 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .btn{display:inline-block;background:var(--btn);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 var(--btnsh)}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--btnsh)}
 /* motion on the hero Register button only */
-.hero .btn{position:relative;transition:transform .18s ease,filter .18s ease}
+.hero .btn{position:relative;transition:transform .18s ease,background .18s ease,box-shadow .18s ease}
 .hero .btn::after{content:"";position:absolute;inset:0;border-radius:40px;animation:ctaPulse 2.2s ease-out infinite;pointer-events:none}
-.hero .btn:hover{transform:translateY(-2px) scale(1.04);filter:brightness(1.07)}
+.hero .btn:hover{transform:translateY(-2px) scale(1.04);background:#ff3b52;box-shadow:0 7px 0 #b3122a}
 .hero .btn:active{transform:translateY(2px) scale(1)}
 @keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(214,40,57,.5)}70%{box-shadow:0 0 0 18px rgba(214,40,57,0)}100%{box-shadow:0 0 0 0 rgba(214,40,57,0)}}
 @media (prefers-reduced-motion:reduce){.hero .btn::after{animation:none}.hero .btn{transition:none}}
