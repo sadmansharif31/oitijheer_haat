@@ -39,7 +39,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .tagband{background:linear-gradient(90deg,var(--green),var(--blue));color:#fff;text-align:center;padding:20px 0 56px;position:relative;z-index:1}
 .tagband p{margin:0;font:italic 600 clamp(18px,3.4vw,27px) 'Poppins','Hind Siliguri';letter-spacing:.3px;text-shadow:0 2px 6px rgba(0,0,0,.25)}
 .meta{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0}
-.meta span{background:var(--green2);border:1px solid rgba(28,117,188,.7);padding:9px 16px;border-radius:12px;font-size:15px;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.meta span{background:var(--green2);border:1px solid rgba(28,117,188,.7);padding:9px 16px;border-radius:12px;font-size:15px;font-weight:700;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.3)}
 .btn{display:inline-block;background:var(--btn);color:#fff;border:0;padding:14px 30px;border-radius:40px;font:600 17px 'Poppins';text-decoration:none;cursor:pointer;box-shadow:0 5px 0 var(--btnsh)}
 .btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--btnsh)}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
@@ -150,6 +150,10 @@ input,select,textarea{font:16px 'Poppins','Hind Siliguri';padding:11px 12px;bord
 input:focus,select:focus,textarea:focus{outline:3px solid var(--gold);border-color:var(--green)}
 .ck{display:flex;gap:10px;align-items:flex-start;font-weight:400}
 .ck input{width:auto;margin-top:6px}
+.catgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:4px}
+.ck2{display:flex;align-items:center;gap:9px;background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:500;font-size:15px;cursor:pointer}
+.ck2 input{width:auto;margin:0}
+.ck2:has(input:checked){border-color:var(--blue);background:rgba(28,117,188,.14)}
 #msg{display:none;text-align:center;padding:30px;max-width:760px;margin:auto;background:var(--card);color:var(--ink);border-radius:20px;border:4px double var(--gold)}
 #msg h3{color:var(--green);font-size:28px}
 
@@ -280,7 +284,15 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="f"><label>Phone *</label><input name="phone" type="tel" required pattern="[0-9+\- ]{10,16}" placeholder="01XXXXXXXXX"></div>
 <div class="f"><label>Email *</label><input name="email" type="email" required></div>
 <div class="f"><label>Your District *</label><select name="district" required><option value="">Select district</option></select></div>
-<div class="f"><label>Product category *</label><select name="cat" required><option value="">Select</option><option>Traditional crafts</option><option>Local food &amp; sweets</option><option>Textiles &amp; handloom</option><option>Pottery &amp; terracotta</option><option>Jute, cane &amp; bamboo</option><option>Other artisanal goods</option></select></div>
+<div class="f full"><label>Product category * (choose one or more)</label>
+<div class="catgrid">
+<label class="ck2"><input type="checkbox" name="cat" value="Traditional crafts"> Traditional crafts</label>
+<label class="ck2"><input type="checkbox" name="cat" value="Local food &amp; sweets"> Local food &amp; sweets</label>
+<label class="ck2"><input type="checkbox" name="cat" value="Textiles &amp; handloom"> Textiles &amp; handloom</label>
+<label class="ck2"><input type="checkbox" name="cat" value="Pottery &amp; terracotta"> Pottery &amp; terracotta</label>
+<label class="ck2"><input type="checkbox" name="cat" value="Jute, cane &amp; bamboo"> Jute, cane &amp; bamboo</label>
+<label class="ck2"><input type="checkbox" name="cat" value="Other artisanal goods"> Other artisanal goods</label>
+</div></div>
 <div class="f"><label>Team members (if any)</label><input name="team" placeholder="Names of teammates from same district"></div>
 <div class="f full"><label>Products you plan to sell *</label><textarea name="prod" rows="3" required placeholder="e.g. Bogura doi, Rajshahi silk, Jamalpur nakshi kantha..."></textarea></div>
 <label class="ck full"><input type="checkbox" name="agree" required> I confirm the above information is correct and I agree to follow the fair's rules.</label>
@@ -580,7 +592,11 @@ const sel=document.querySelector('[name=district]');D.forEach(d=>sel.add(new Opt
 // registration (unchanged robust POST)
 document.getElementById('f').addEventListener('submit',async e=>{
 e.preventDefault();
-const f=e.target,r=Object.fromEntries(new FormData(f));delete r.agree;r.at=new Date().toISOString();
+const f=e.target;
+if(!f.querySelectorAll('input[name=cat]:checked').length){ alert('Please select at least one product category.'); return; }
+const r=Object.fromEntries(new FormData(f));delete r.agree;
+r.cat=new FormData(f).getAll('cat').join(', ');
+r.at=new Date().toISOString();
 const btn=f.querySelector('button[type=submit]');const old=btn.textContent;btn.disabled=true;btn.textContent='Submitting...';
 let saved=false;
 try{ await apiSend(Object.assign({action:"register"},r)); saved=true; }catch(x){ saved=false; }
