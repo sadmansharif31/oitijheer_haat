@@ -52,6 +52,10 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .hero .btn:active{transform:translateY(2px) scale(1)}
 @keyframes ctaPulse{0%{box-shadow:0 0 0 0 rgba(214,40,57,.5)}70%{box-shadow:0 0 0 18px rgba(214,40,57,0)}100%{box-shadow:0 0 0 0 rgba(214,40,57,0)}}
 @media (prefers-reduced-motion:reduce){.hero .btn::after{animation:none}.hero .btn{transition:none}}
+/* form submit button: left-to-right green->blue color sweep on hover */
+.reg .btn{background:linear-gradient(90deg,var(--green) 0%,var(--blue) 50%,var(--btn) 50%,var(--btn) 100%);background-size:200% 100%;background-position:100% 0;transition:background-position .45s ease}
+.reg .btn:hover{background-position:0 0}
+@media (prefers-reduced-motion:reduce){.reg .btn{transition:none}}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
 .count{display:none;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:40px;font:600 16px 'Poppins';margin-left:8px;box-shadow:0 5px 0 #0c3f72;vertical-align:middle}
 .count b{font-weight:800;font-size:21px;line-height:1}
