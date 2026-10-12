@@ -57,7 +57,8 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 .reg .btn:hover{background-position:0 0}
 @media (prefers-reduced-motion:reduce){.reg .btn{transition:none}}
 .btn.alt{background:transparent;border:2px solid var(--gold);box-shadow:none;margin-left:8px}
-.count{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:40px;font:600 16px 'Poppins';margin-left:8px;box-shadow:0 5px 0 #0c3f72;vertical-align:middle}
+.herobtns{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center;margin:12px 0}
+.count{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:40px;font:600 16px 'Poppins';box-shadow:0 5px 0 #0c3f72;vertical-align:middle}
 .count b{font-weight:800;font-size:21px;line-height:1}
 .stats{margin-top:-40px;position:relative;z-index:2}
 .stats .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
@@ -106,7 +107,7 @@ tr.hl td{background:var(--blue);color:#fff;font-weight:700}
 .hero .hoverlay{position:absolute;inset:0;z-index:1;display:none;background:radial-gradient(125% 88% at 50% 40%, rgba(3,30,20,.9) 0%, rgba(8,55,70,.56) 48%, rgba(10,58,100,.34) 100%)}
 .hero.hasphotos .wrap{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 /* over photos, give the tagline and countdown a solid backing so they stay readable */
-.cd{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:40px;font:700 16px 'Poppins';margin-left:8px;box-shadow:0 5px 0 #0c3f72;vertical-align:middle}
+.cd{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:#fff;border:0;padding:14px 24px;border-radius:40px;font:700 16px 'Poppins';box-shadow:0 5px 0 #0c3f72;vertical-align:middle}
 .hero.hasphotos .hoverlay{display:block}
 .hero.hasphotos:before{opacity:.05}
 .hero.hasphotos .sun{opacity:.3}
@@ -190,7 +191,7 @@ footer p{margin:4px 0}
 footer .c{color:var(--gold);font-weight:700}
 footer a.adminlink{opacity:.4;font-size:12px}
 .lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;color:#fff;font-size:20px;padding:20px;text-align:center}
-@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.count{margin-left:0;margin-top:10px}.cd{margin-left:0;margin-top:10px}.row{flex-direction:column;align-items:flex-start;gap:6px}.navlogo,#navdiu img{height:28px}.mlogo{width:40vw;margin:16px auto 8px}}
+@media(max-width:760px){.two{grid-template-columns:1fr}form{grid-template-columns:1fr;padding:20px}.sun{width:200px;height:200px}.btn.alt{margin:10px 0 0}.row{flex-direction:column;align-items:flex-start;gap:6px}.navlogo,#navdiu img{height:28px}.mlogo{width:40vw;margin:16px auto 8px}}
 </style>
 </head>
 <body>
@@ -203,9 +204,9 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="brand" id="brandline">BRANDING BANGLADESH</div>
 <div class="haatlogo" id="haatlogo"></div>
 <h1 id="haattitle">ঐতিহ্যের হাট</h1>
-<div class="initiative"><span class="ini-sub">Organized by</span><b>Department of Innovation &amp; Entrepreneurship and BRAC Bank PLC</b></div>
+<div class="initiative"><span class="ini-sub">Organized by</span><b>Department of Innovation &amp; Entrepreneurship and<br>BRAC Bank PLC</b></div>
 <div class="meta"><span>📅 21 November 2026</span><span>📍 Daffodil Smart City, Birulia, Savar</span></div>
-<span class="cd" id="cd" aria-live="polite"></span><a class="btn" href="#register">Register Now</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">…</b> registered</span>
+<div class="herobtns"><span class="cd" id="cd" aria-live="polite"></span><a class="btn" href="#register">Register Now</a><span class="count" id="regcount" aria-live="polite">🎪 <b id="regnum">…</b> Registered</span></div>
 </div>
 <button class="hnav p" onclick="gPrev()" aria-label="Previous photo">&#8249;</button>
 <button class="hnav n" onclick="gNext()" aria-label="Next photo">&#8250;</button>
