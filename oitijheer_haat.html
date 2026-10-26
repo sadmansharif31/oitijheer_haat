@@ -175,6 +175,12 @@ input:focus,select:focus,textarea:focus{outline:3px solid var(--gold);border-col
 .ck2{display:flex;align-items:center;gap:9px;background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font-weight:500;font-size:15px;cursor:pointer}
 .ck2 input{width:auto;margin:0}
 .ck2:has(input:checked){border-color:var(--blue);background:rgba(28,117,188,.14)}
+/* multi-line bilingual product options: keep the checkbox at the top line */
+.catgrid .ck2{align-items:flex-start;font-size:14px;line-height:1.35}
+.catgrid .ck2 input{margin-top:3px}
+.catgrid .ck2 .ex{display:block;font-weight:400;font-size:12px;opacity:.72;margin-top:2px}
+.cathead{grid-column:1/-1;font-weight:700;font-size:16px;color:var(--blue);margin:6px 0 2px}
+.stallrule{background:rgba(224,165,38,.14);border:1.5px solid var(--gold);border-radius:12px;padding:12px 14px;font-size:14px;line-height:1.45;margin:4px 0 10px}
 #msg{display:none;text-align:center;padding:30px;max-width:760px;margin:auto;background:var(--card);color:var(--ink);border-radius:20px;border:4px double var(--gold)}
 #msg h3{color:var(--green);font-size:28px}
 
@@ -228,9 +234,8 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <section id="about" class="dots"><div class="wrap">
 <div class="title"><h2>About ঐতিহ্যের হাট</h2><i></i></div>
 <div class="two">
-<div class="about"><p>ঐতিহ্যের হাট is a heritage fair that brings the best of all 64 districts of Bangladesh to one campus. DIU students set up stalls for their home districts and sell the products each district is famous for: traditional crafts, local food and artisanal goods.</p>
-<p>For the first time, all 64 districts will be represented, so visitors can enjoy the whole country's heritage in a single day, and the students gain real business experience.</p></div>
-<div class="chips"><div class="chip">🏺 Traditional crafts &amp; artisanal goods</div><div class="chip">🍯 Famous regional foods</div><div class="chip">🏪 64 student-run district stalls</div><div class="chip">🎭 Cultural performances</div><div class="chip">🏆 District competition &amp; awards</div></div>
+<div class="about"><p>ঐতিহ্যের হাট (Market for Tradition) is a flagship initiative of the Department of Innovation &amp; Entrepreneurship, Daffodil International University, showcasing traditional products, local delicacies, and handicrafts from all 64 districts of Bangladesh on one campus. It celebrates cultural heritage, promotes local artisans, and provides students with hands-on entrepreneurial experience, bridging tradition with business opportunities.</p></div>
+<div class="chips"><div class="chip">🏺 Traditional products of 64 districts</div><div class="chip">🧺 Local crafts &amp; artisanal goods</div><div class="chip">🍯 Famous regional foods</div><div class="chip">🏪 64 student-run district stalls</div><div class="chip">🎭 Traditional cultural performances</div><div class="chip">🏆 Inter-district competition &amp; awards</div></div>
 </div></div></section>
 
 <section style="background:var(--paper)"><div class="wrap">
@@ -306,15 +311,30 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="f"><label>Division *</label><select name="team" required><option value="">Select division</option><option>Barisal</option><option>Chattogram</option><option>Dhaka</option><option>Khulna</option><option>Mymensingh</option><option>Rajshahi</option><option>Rangpur</option><option>Sylhet</option></select></div>
 <div class="f"><label>Your District *</label><select name="district" required><option value="">Select district</option></select></div>
 <div class="f full"><label>Product category * (choose one or more)</label>
+<div class="stallrule"><b>Stall Rule:</b> Your stall must be at least 50% traditional or heritage products (ঐতিহ্যবাহী পণ্য) from your district. Food items (খাদ্যপণ্য) are limited to a maximum of 50%.</div>
 <div class="catgrid">
-<label class="ck2"><input type="checkbox" name="cat" value="Traditional crafts"> Traditional crafts</label>
-<label class="ck2"><input type="checkbox" name="cat" value="Local food &amp; sweets"> Local food &amp; sweets</label>
-<label class="ck2"><input type="checkbox" name="cat" value="Textiles &amp; handloom"> Textiles &amp; handloom</label>
-<label class="ck2"><input type="checkbox" name="cat" value="Pottery &amp; terracotta"> Pottery &amp; terracotta</label>
-<label class="ck2"><input type="checkbox" name="cat" value="Jute, cane &amp; bamboo"> Jute, cane &amp; bamboo</label>
-<label class="ck2"><input type="checkbox" name="cat" value="Other artisanal goods"> Other artisanal goods</label>
+<div class="cathead">🏺 Traditional products / ঐতিহ্যবাহী পণ্য (minimum 50%)</div>
+<label class="ck2"><input type="checkbox" name="cat" value="Handloom &amp; textiles"> <span>Handloom &amp; textiles / তাঁত ও বস্ত্র<span class="ex">Jamdani, Tangail tant, Rajshahi silk, Manipuri, Khadi, Gamcha</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Nakshi kantha &amp; embroidery"> <span>Nakshi kantha &amp; embroidery / নকশিকাঁথা ও সূচিকর্ম</span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Shital pati &amp; mats"> <span>Shital pati &amp; mats / শীতলপাটি ও মাদুর</span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Pottery &amp; terracotta"> <span>Pottery &amp; terracotta / মৃৎশিল্প<span class="ex">Shokher hari, clay pots, terracotta plaques</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Jute products"> <span>Jute products / পাটজাত পণ্য<span class="ex">bags, shika, carpets, décor</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Cane &amp; bamboo crafts"> <span>Cane &amp; bamboo crafts / বাঁশ ও বেতের পণ্য<span class="ex">baskets, kula, furniture</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Brass &amp; bell metal"> <span>Brass &amp; bell metal / কাঁসা-পিতল<span class="ex">Dhamrai and Islampur kansha</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Folk toys &amp; dolls"> <span>Folk toys &amp; dolls / লোকজ খেলনা ও পুতুল<span class="ex">Tepa putul, wooden horse, nagordola</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Folk art"> <span>Folk art / লোকশিল্প<span class="ex">rickshaw art, Patachitra, Shora painting</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Shankha &amp; shell crafts"> <span>Shankha &amp; shell crafts / শাঁখা ও ঝিনুকের পণ্য</span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Wood &amp; coconut-shell crafts"> <span>Wood &amp; coconut-shell crafts / কাঠ ও নারকেলের খোলের পণ্য</span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Indigenous handicrafts"> <span>Indigenous handicrafts / আদিবাসী হস্তশিল্প<span class="ex">Chakma–Marma weaving, Bein textiles, ethnic jewellery</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Other traditional products"> <span>Other traditional products</span></label>
+<div class="cathead">🍯 Food items / খাদ্যপণ্য (maximum 50%)</div>
+<label class="ck2"><input type="checkbox" name="cat" value="Famous district sweets"> <span>Famous district sweets / জেলার বিখ্যাত মিষ্টি<span class="ex">Muktagachha monda, Porabari chomchom, Cumilla rasmalai, Bogura doi, Natore kacha golla</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Pitha &amp; traditional snacks"> <span>Pitha &amp; traditional snacks / পিঠা ও মুখরোচক খাবার<span class="ex">Pitha, naru, murki, chira-muri</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Gur, honey &amp; natural produce"> <span>Gur, honey &amp; natural produce / গুড়, মধু ও প্রাকৃতিক পণ্য<span class="ex">Jashore khejur gur, Sundarbans honey</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Dried &amp; preserved foods"> <span>Dried &amp; preserved foods / শুঁটকি ও আচার<span class="ex">Cox's Bazar shutki, homemade achar, Sylhet shatkora</span></span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Seasonal fruits &amp; local produce"> <span>Seasonal fruits &amp; local produce / মৌসুমি ফল ও কৃষিপণ্য</span></label>
+<label class="ck2"><input type="checkbox" name="cat" value="Other traditional food"> <span>Other traditional food</span></label>
 </div></div>
-<div class="f full"><label>Products you plan to sell *</label><textarea name="prod" rows="3" required placeholder="e.g. Bogura doi, Rajshahi silk, Jamalpur nakshi kantha..."></textarea></div>
 <label class="ck full"><input type="checkbox" name="agree" required> I confirm the above information is correct and I agree to follow the fair's rules.</label>
 <div class="full" style="text-align:center"><button class="btn" type="submit">Submit Registration</button></div>
 </form>
