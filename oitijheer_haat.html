@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ঐতিহ্যের হাট ৫.০ · Branding Bangladesh · DIU</title>
+<!-- browser tab icon (favicon). starts as a branded placeholder, then swaps to the real Oitijjher Haat logo once loadPartners() runs -->
+<link id="favicon" rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2323a24a'/%3E%3Ccircle cx='32' cy='32' r='15' fill='%233e97e6'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--green:#23a24a;--green2:#15803a;--blue:#1c75bc;--blue2:#11537f;--red:#3e97e6;--btn:#d62839;--btnsh:#8f1623;--gold:#23a24a;--cream:#fbf3e1;--paper:#fff9ec;--ink:#2a1c10;--card:#fffdf6;--line:#e8d6ac;
@@ -499,6 +501,9 @@ async function loadPartners(){
   const nav=document.getElementById('navbrand');
   const hl=document.getElementById('haatlogo'), ht=document.getElementById('haattitle'), bl=document.getElementById('brandline');
   if(haat){
+    // set the browser tab icon (favicon) to the real Oitijjher Haat logo
+    var favEl=document.getElementById('favicon');                 // the <link> tag in the head
+    if(favEl){ favEl.setAttribute('type','image/png'); favEl.href=haat.url; }  // point it at the uploaded logo
     if(nav) nav.innerHTML=`<img class="navlogo" src="${cldOpt(haat.url)}" alt="Oitijjher Haat">`;
     if(hl){ hl.innerHTML=`<img class="haatimg" src="${cldOpt(haat.url)}" alt="Oitijjher Haat - Branding Bangladesh">`; hl.style.display='block'; }
     if(ht) ht.style.display='none';
