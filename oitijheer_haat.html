@@ -77,16 +77,19 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 /* ---------- guideline download buttons (registration) ---------- */
 .guides{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:2px 0 22px}
 @media(max-width:620px){.guides{grid-template-columns:1fr}}
-.guides .gh{grid-column:1/-1;font-weight:700;color:#fff;font-size:16px;margin-bottom:4px;font-family:'Poppins','Hind Siliguri';text-shadow:0 1px 4px rgba(0,0,0,.35)}
-.guides .gcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:14px;padding:15px 16px;font-family:'Poppins','Hind Siliguri';border:2px solid rgba(255,255,255,.55);box-shadow:0 8px 20px rgba(0,0,0,.30);transition:transform .15s ease,box-shadow .15s ease,filter .15s ease}
-.guides .gcard:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.4);filter:brightness(1.07)}
+.guides .gh{grid-column:1/-1;text-align:center;font-weight:800;color:#fff;font-size:17px;margin-bottom:8px;font-family:'Poppins','Hind Siliguri';text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.guides .gcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:16px;padding:15px 16px;font-family:'Poppins','Hind Siliguri';border:2px solid rgba(255,255,255,.7);box-shadow:0 6px 0 var(--edge),0 10px 20px rgba(0,0,0,.30);transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
+.guides .gcard:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--edge),0 14px 26px rgba(0,0,0,.4);filter:brightness(1.06)}
+.guides .gcard:active{transform:translateY(4px);box-shadow:0 2px 0 var(--edge),0 6px 12px rgba(0,0,0,.35)}
 .guides .gcard .ic{font-size:27px;line-height:1;flex:0 0 auto;background:rgba(255,255,255,.22);border-radius:10px;padding:7px 9px}
-.guides .gcard .tx{display:flex;flex-direction:column;line-height:1.25}
+.guides .gcard .tx{display:flex;flex-direction:column;line-height:1.25;flex:1 1 auto;min-width:0}
 .guides .gcard .tx b{font-weight:700;font-size:15px}
 .guides .gcard .tx span{font-size:12px;opacity:.95;margin-top:2px}
-.guides .g1{background:linear-gradient(135deg,#ff9d2e,#e36f00)}
-.guides .g2{background:linear-gradient(135deg,#2f9be8,#0f5fa3)}
-.guides .g3{background:linear-gradient(135deg,#ff4d5e,#c01626)}
+.guides .gcard .go{flex:0 0 auto;background:#fff;color:#16281c;font-weight:800;font-size:12px;letter-spacing:.2px;padding:8px 13px;border-radius:22px;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,.22)}
+.guides .gcard:hover .go{background:#fffbe9}
+.guides .g1{background:linear-gradient(135deg,#2f6fe0,#1649ad);--edge:#123a8c}
+.guides .g2{background:linear-gradient(135deg,#9b4dff,#6a1fc0);--edge:#4a1690}
+.guides .g3{background:linear-gradient(135deg,#ff4d5e,#c01626);--edge:#7d0c1b}
 .two{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center}
 .about p{font-size:18px}
 .chips{display:grid;gap:10px}
@@ -317,9 +320,9 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <div class="title"><h2>Registration</h2><i></i></div>
 <div class="guides">
 <div class="gh">📋 General Guidelines &amp; Judging Criteria</div>
-<a class="gcard g1" href="https://drive.google.com/file/d/14_TWDcIUjxTimcIvgAzZCm4Z_4aZkmm7/view" target="_blank" rel="noopener"><span class="ic">📘</span><span class="tx"><b>Participant Guidelines</b><span>অংশগ্রহণকারীদের নির্দেশিকা · Open ↗</span></span></a>
-<a class="gcard g2" href="https://drive.google.com/file/d/1k2YqJ1wFxrLMOTkRn9EANxnaMFaI3oba/view" target="_blank" rel="noopener"><span class="ic">📣</span><span class="tx"><b>Promotional Content Criteria</b><span>Promotional কনটেন্টের Criteria · Open ↗</span></span></a>
-<a class="gcard g3" href="https://drive.google.com/file/d/1BtEK-cPJSqQNSIlBSQf6keQIwDYTPVet/view" target="_blank" rel="noopener"><span class="ic">🏆</span><span class="tx"><b>Judgment Criteria</b><span>বিচারের মানদণ্ড · Open ↗</span></span></a>
+<a class="gcard g1" href="https://drive.google.com/file/d/14_TWDcIUjxTimcIvgAzZCm4Z_4aZkmm7/view" target="_blank" rel="noopener"><span class="ic">📘</span><span class="tx"><b>Participant Guidelines</b><span>অংশগ্রহণকারীদের নির্দেশিকা</span></span><span class="go">Click Here ↗</span></a>
+<a class="gcard g2" href="https://drive.google.com/file/d/1k2YqJ1wFxrLMOTkRn9EANxnaMFaI3oba/view" target="_blank" rel="noopener"><span class="ic">📣</span><span class="tx"><b>Promotional Content Criteria</b><span>Promotional কনটেন্টের Criteria</span></span><span class="go">Click Here ↗</span></a>
+<a class="gcard g3" href="https://drive.google.com/file/d/1BtEK-cPJSqQNSIlBSQf6keQIwDYTPVet/view" target="_blank" rel="noopener"><span class="ic">🏆</span><span class="tx"><b>Judgment Criteria</b><span>বিচারের মানদণ্ড</span></span><span class="go">Click Here ↗</span></a>
 </div>
 <form id="f">
 <div class="f"><label>Full name *</label><input name="name" required></div>
