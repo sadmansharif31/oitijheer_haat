@@ -77,7 +77,7 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 /* ---------- guideline download buttons (registration) ---------- */
 .guides{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:0 0 14px}
 @media(max-width:620px){.guides{grid-template-columns:1fr;gap:8px}}
-.guides .gh{grid-column:1/-1;text-align:center;font-weight:700;color:#fff;font-size:14px;margin-bottom:5px;font-family:'Poppins','Hind Siliguri';text-shadow:0 1px 4px rgba(0,0,0,.35)}
+.guides .gh{grid-column:1/-1;text-align:center;font-weight:700;color:#fff;font-size:clamp(22px,4vw,32px);margin-bottom:12px;font-family:'Poppins','Hind Siliguri';letter-spacing:-.3px}
 .guides .gcard{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff;border-radius:12px;padding:9px 11px;font-family:'Poppins','Hind Siliguri';border:1.5px solid rgba(255,255,255,.65);box-shadow:0 4px 0 var(--edge),0 6px 12px rgba(0,0,0,.26);transition:transform .12s ease,box-shadow .12s ease,filter .12s ease}
 .guides .gcard:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--edge),0 10px 18px rgba(0,0,0,.36);filter:brightness(1.06)}
 .guides .gcard:active{transform:translateY(3px);box-shadow:0 1px 0 var(--edge),0 4px 9px rgba(0,0,0,.32)}
@@ -317,13 +317,13 @@ footer a.adminlink{opacity:.4;font-size:12px}
 </div></section>
 
 <section id="register" class="reg"><div class="wrap">
-<div class="title"><h2>Registration</h2><i></i></div>
 <div class="guides">
 <div class="gh">📋 General Guidelines &amp; Judging Criteria</div>
 <a class="gcard g1" href="https://drive.google.com/file/d/14_TWDcIUjxTimcIvgAzZCm4Z_4aZkmm7/view" target="_blank" rel="noopener"><span class="ic">📘</span><span class="tx"><b>Participant Guidelines</b><span>অংশগ্রহণকারীদের নির্দেশিকা</span></span><span class="go">Click Here ↗</span></a>
 <a class="gcard g2" href="https://drive.google.com/file/d/1k2YqJ1wFxrLMOTkRn9EANxnaMFaI3oba/view" target="_blank" rel="noopener"><span class="ic">📣</span><span class="tx"><b>Promotional Content Criteria</b><span>Promotional কনটেন্টের Criteria</span></span><span class="go">Click Here ↗</span></a>
 <a class="gcard g3" href="https://drive.google.com/file/d/1BtEK-cPJSqQNSIlBSQf6keQIwDYTPVet/view" target="_blank" rel="noopener"><span class="ic">🏆</span><span class="tx"><b>Judgment Criteria</b><span>বিচারের মানদণ্ড</span></span><span class="go">Click Here ↗</span></a>
 </div>
+<div class="title"><h2>Registration</h2><i></i></div>
 <form id="f">
 <div class="f"><label>Full name *</label><input name="name" required></div>
 <div class="f"><label>Student ID *</label><input name="sid" required placeholder="e.g. 221-15-1234"></div>
