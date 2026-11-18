@@ -81,6 +81,11 @@ radial-gradient(circle at 50% 50%,transparent 0 18px,#fff 19px 20px,transparent 
 :root[data-theme="dark"] .title h2{color:var(--gold)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .title h2{color:var(--gold)}}
 .title i{display:none}
+/* ---------- registration closed notice ---------- */
+.closed{max-width:640px;margin:6px auto 0;text-align:center;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.5);border-radius:18px;padding:34px 24px;box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.closed .lk{font-size:48px;line-height:1}
+.closed h3{color:#fff;font-family:'Poppins','Hind Siliguri';font-weight:800;font-size:clamp(23px,4.5vw,32px);margin:12px 0 8px}
+.closed p{color:#fff;opacity:.96;font-size:15px;line-height:1.55;margin:0 auto;max-width:520px}
 /* ---------- guideline download buttons (registration) ---------- */
 .guides{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:0 0 14px}
 @media(max-width:620px){.guides{grid-template-columns:1fr;gap:8px}}
@@ -331,7 +336,12 @@ footer a.adminlink{opacity:.4;font-size:12px}
 <a class="gcard g3" href="https://drive.google.com/file/d/1BtEK-cPJSqQNSIlBSQf6keQIwDYTPVet/view" target="_blank" rel="noopener"><span class="ic">🏆</span><span class="tx"><b>Judgment Criteria</b></span><span class="go">Click Here ↗</span></a>
 </div>
 <div class="title"><h2>Registration</h2><i></i></div>
-<form id="f">
+<div class="closed">
+<div class="lk">🔒</div>
+<h3>Registration Closed</h3>
+<p>রেজিস্ট্রেশন এখন বন্ধ। Registration for ঐতিহ্যের হাট is now closed. Thank you for your overwhelming response.</p>
+</div>
+<form id="f" style="display:none">
 <div class="f"><label>Full name *</label><input name="name" required></div>
 <div class="f"><label>Student ID *</label><input name="sid" required placeholder="e.g. 221-15-1234"></div>
 <div class="f"><label>Department *</label><select name="dept" required><option value="">Select department</option><option>Department of Innovation &amp; Entrepreneurship</option><option>Department of Business Administration</option><option>Department of Management</option><option>Department of Real Estate</option><option>Department of Tourism &amp; Hospitality Management</option><option>Department of Accounting</option><option>Department of Finance &amp; Banking</option><option>Department of Marketing</option><option>Department of Computer Science and Engineering (CSE)</option><option>Department of Software Engineering (SWE)</option><option>Department of Multimedia &amp; Creative Technology (MCT)</option><option>Department of Computing and Information System (CIS)</option><option>Department of Information Technology &amp; Management (ITM)</option><option>Department of Robotics and Mechatronics Engineering</option><option>Department of Agricultural Science</option><option>Department of Fisheries</option><option>Department of Information and Communication Engineering (ICE)</option><option>Department of Textile Engineering (TE)</option><option>Department of Electrical and Electronic Engineering (EEE)</option><option>Department of Architecture</option><option>Department of Civil Engineering (CE)</option><option>Department of Environmental Science and Disaster Management (ESDM)</option><option>Department of Pharmacy</option><option>Department of Nutrition and Food Engineering (NFE)</option><option>Department of Public Health</option><option>Department of Physical Education &amp; Sports Science</option><option>Department of Genetic Engineering and Biotechnology</option><option>Department of English</option><option>Department of Law</option><option>Department of Journalism, Media and Communication (JMC)</option><option>Department of Development Studies</option></select></div>
